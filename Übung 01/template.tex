@@ -84,47 +84,21 @@
 \cfoot*{\pagemark} % Seitenzahlen unten
 
 \begin{document}
-	\section*{Aufgabe 1}
-	\begin{enumerate}[label=\alph*)]
-		\item 
-		\item 
-	\end{enumerate}
-	
-	
-	\section*{Aufgabe 2}
-	$q_0 110 \vdash 1 q_0 10 \vdash 11 q_0 0 \vdash 110 q_0 \vdash 11 q_1 0 \vdash 110 \bar{q}$
-	
-	
-	\section*{Aufgabe 3}
-	Turingmaschine $M= (\{q_0 , q_1 , q_2 , \bar{q}\}, \{0,1\}, \{0,1,B\}, B, q_0, \bar{q}, \delta)$ mit Verhalten:\\
-	\begin{tabular}{c | c c c}
-	$\delta$ & 0 & 1 & B \\
-	\hline
-	$q_0$ & ($q_0$, 0, R) & ($q_1$, 1, R) & ($q_0$, B, L) \\
-	$q_1$ & ($q_2$, 0, L) & ($q_1$, 1, L) & ($\bar{q}$, B, N) \\
-	$q_2$ & ($\bar{q}$, 1, N) & ($q_1$, 0, L) & ($q_0$, 1, L) \\
-	\end{tabular}
-	\subsection*{Funktionsweise}
-	\begin{itemize}
-	\item Wurde $\epsilon$ als Eingabe gegeben. macht die Turingmaschine nichts am Band
-	\item Wurde nicht $\epsilon$ als Eingabe übergeben, so geht die Folgt die Turingmaschine diesen Schritten:
-		\begin{enumerate}[label=\arabic*.)]
-		\item Gehe bis an das Ende der Eingabe (also bis B)
-		\item Gehe 2 Stellen nach links
-		\item Falls 0 unter dem Lesekopf, dann ändere es zu 1 und terminiere. Sonst schreibe 0, gehe nach links und wiederhole den Schritt.
-		\end{enumerate}
-	\end{itemize}
-	
-	
 	\section*{Aufgabe 4}
 	\begin{enumerate}[label=\alph*)]
-		\item 
-		\item 
+		\item Sei $n \coloneqq \vert V \vert$, und $v_i$ alle paarweise unterschiedlichen Knoten in $V$ für $i \in 1...n$. Sei $A=(a_{i,j})^{n \times n}$ die Adjazenzmatrix von $G$. \\
+			  Dann ist $L_{HP} = \{bin(v_{\pi (1)}) \# ... \# bin(v_{\pi (n)}) \vert \forall i \in 1...(n-1): a_{i,i+1} = 1 \land \pi \in S_n\}$.
+		\item Seien hier $M \subseteq \mathbb{N}$ eine Zahlenmenge, $n \coloneqq \vert M \vert$ und $m_i$ die Elemente von M für $i \in 1...n$. \\
+			  Dann ist:
+			  \begin{multline*}
+			  L_{P3} = \{bin(m_{\pi (1)}) \# ... \# bin(m_{\pi (a)}) \# \# bin(m_{\pi (a+1)}) \# ... \# bin(m_{\pi (b)}) \# \# bin(m_{\pi (b+1)}) \# ... \# bin(m_{\pi (n)}) \\ \mid (a,b \in \mathbb{N} \land 0 \leq a \leq b \leq n) \land (\pi \in S_n) \land (\sum_{i=1}^{a} m_{\pi (i)} = \sum_{i=a+1}^{b} m_{\pi (i)} = \sum_{i=b+1}^{n} m_{\pi (i)})\}
+			  \end{multline*}
 	\end{enumerate}
 	
 	
 	\section*{Aufgabe 5}
-	Die Turingmaschine M gibt akzeptiert nur die Wörter der Sprache $L = 0(0+1)^* 1 + 1(0+1)^* 0$
+	Die Turingmaschine M gibt akzeptiert nur die Wörter der Sprache: \\
+	$L = 0(0+1)^* 1 + 1(0+1)^* 0$
 	\subsection*{Funktionsweise}
 	\begin{itemize}
 	\item Wurde $\epsilon$ als Eingabe übergeben, so wird dieses Wort sofort rejected ($=(\bar{q},0,N)$).
@@ -136,8 +110,15 @@
 	\end{itemize}
 	
 	\section*{Aufgabe 6}
+	Turingmaschine $M= (\{q_0 , q_1 , \bar{q}\}, \{0,1\}, \{0,1,B\}, B, q_0, \bar{q}, \delta)$ mit Verhalten:\\\\
+	\begin{tabular}{c | c c c}
+	$\delta$ & 0 & 1 & B \\
+	\hline
+	$q_0$ & ($q_0$, 1, R) & ($q_1$, 1, L) & ($q_1$, 1, R) \\
+	$q_1$ & ($q_2$, 1, L) & ($\bar{q}$, 1, N) & ($q_0$, 1, L) \\
+	\end{tabular}
+	\\\\Konfigurationsreihenfolge für Eingabe $\epsilon$: \\
+	$q_0 \vdash 1 q_1 \vdash q_0 11 \vdash q_1 B11 \vdash q_0 B111 \vdash 1 q_1 111 \vdash 1 \bar{q} 111$
 	
-		
-		
 \end{document}
 

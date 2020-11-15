@@ -87,7 +87,7 @@
 	\section*{Aufgabe 4}
 	\begin{enumerate}[label=\alph*)]
 		\item Sei $n \coloneqq \vert V \vert$, und $v_i$ alle paarweise unterschiedlichen Knoten in $V$ für $i \in 1...n$. Sei $A=(a_{i,j})^{n \times n}$ die Adjazenzmatrix von $G$. \\
-			  Dann ist $L_{HP} = \{bin(v_{\pi (1)}) \# ... \# bin(v_{\pi (n)}) \vert \forall i \in 1...(n-1): a_{i,i+1} = 1 \land \pi \in S_n\}$.
+			  Dann ist $L_{HP} = \{bin(v_1) \# ... \# bin(v_n) \vert  \exists \pi \in S_n : \forall i \in 1...(n-1): a_{\pi (i),\pi (i+1)} = 1\}$.
 		\item Sei $M$ eine Multimenge über $\mathbb{N}$, $n \coloneqq \vert M \vert$ und $m_i$ die Elemente von $M$ für $i \in 1...n$. \\
 			  Dann ist:
 			  \begin{multline*}
@@ -114,8 +114,8 @@
 	\begin{tabular}{c | c c c}
 	$\delta$ & 0 & 1 & B \\
 	\hline
-	$q_0$ & ($q_0$, 1, R) & ($q_1$, 1, L) & ($q_1$, 1, R) \\
-	$q_1$ & ($q_2$, 1, L) & ($\bar{q}$, 1, N) & ($q_0$, 1, L) \\
+	$q_0$ & ($\bar{q}$, 0, N) & ($q_1$, 1, L) & ($q_1$, 1, R) \\
+	$q_1$ & ($\bar{q}$, 0, N) & ($\bar{q}$, 1, N) & ($q_0$, 1, L) \\
 	\end{tabular}
 	\\\\Konfigurationsreihenfolge für Eingabe $\epsilon$: \\
 	$q_0 \vdash 1 q_1 \vdash q_0 11 \vdash q_1 B11 \vdash q_0 B111 \vdash 1 q_1 111 \vdash 1 \bar{q} 111$

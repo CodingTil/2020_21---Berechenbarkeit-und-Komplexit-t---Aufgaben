@@ -75,7 +75,7 @@
 \usepackage{enumitem}
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
-\ihead{BuK WS 2020/21 \\ Tutorium 99 \\\today}
+\ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
 \chead{\Large Übungsblatt 1}
 \ohead{Til Mohr, 405959 \\
 	   Andrés Montoya, 405409 \\
@@ -88,10 +88,10 @@
 	\begin{enumerate}[label=\alph*)]
 		\item Sei $n \coloneqq \vert V \vert$, und $v_i$ alle paarweise unterschiedlichen Knoten in $V$ für $i \in 1...n$. Sei $A=(a_{i,j})^{n \times n}$ die Adjazenzmatrix von $G$. \\
 			  Dann ist $L_{HP} = \{bin(v_{\pi (1)}) \# ... \# bin(v_{\pi (n)}) \vert \forall i \in 1...(n-1): a_{i,i+1} = 1 \land \pi \in S_n\}$.
-		\item Seien hier $M \subseteq \mathbb{N}$ eine Zahlenmenge, $n \coloneqq \vert M \vert$ und $m_i$ die Elemente von M für $i \in 1...n$. \\
+		\item Sei $M$ eine Multimenge über $\mathbb{N}$, $n \coloneqq \vert M \vert$ und $m_i$ die Elemente von $M$ für $i \in 1...n$. \\
 			  Dann ist:
 			  \begin{multline*}
-			  L_{P3} = \{bin(m_{\pi (1)}) \# ... \# bin(m_{\pi (a)}) \# \# bin(m_{\pi (a+1)}) \# ... \# bin(m_{\pi (b)}) \# \# bin(m_{\pi (b+1)}) \# ... \# bin(m_{\pi (n)}) \\ \mid (a,b \in \mathbb{N} \land 0 \leq a \leq b \leq n) \land (\pi \in S_n) \land (\sum_{i=1}^{a} m_{\pi (i)} = \sum_{i=a+1}^{b} m_{\pi (i)} = \sum_{i=b+1}^{n} m_{\pi (i)})\}
+			  L_{P3} = \{ 1 \ 0^{m_1} \ 1 \ 0^{m_2} \ 1 \ ... \ 1 \ 0^{m_n} \ 1 \mid \exists \ f: m_i \rightarrow \{1, 2, 3\} \ injektiv \ sodass \\ \sum_{i \in f^{-1}(1)} i = \sum_{i \in f^{-1}(2)} i = \sum_{i \in f^{-1}(3)} i\}
 			  \end{multline*}
 	\end{enumerate}
 	

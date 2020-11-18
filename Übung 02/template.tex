@@ -1,0 +1,135 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 99 \\\today}
+\chead{\Large Übungsblatt 1}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	
+	\section*{Aufgabe 5}
+	Sei $x$ unser Eingabewort.
+	\subsection*{Ausgang}
+		\begin{itemize}
+		\item Eingabe $x$ liegt auf Band 1.
+		\item Kopf $k1$ für Band 1 liegt auf dem ersten Zeichen von $x$, Kopf $k2$ für Band 2 liegt über dem letzten Zeichen von $x$ (Kann man auch in $\mathcal{O} (\vert x \vert )$ einstellen).
+		\end{itemize}
+	\subsection*{Funktionsweise}
+		\begin{enumerate}
+		\item Lese Zeichen $(x)_i$ von $k1$ und schreibe es auf $k2$.
+		\item Schiebe $k1$ nach Rechts, $k2$ nach links.
+		\item Gehe zu $1)$, falls $k1$ nicht auf $B$ liegt.
+		\item Schiebe $k1$ wieder einmal nach Links und $k2$ solange nach Rechts, bis es auf $B$ liegt. Dann wieder einmal nach Links ($k1$ und $k2$ liegen also übereinander).
+		\item Vergleiche Zeichen unter $k1$ und $k2$. Verwerfe, wenn Zeichen ungleich. Sonst schiebe beide Köpfe nach links und wiederhole solange, bis beide auf $B$ liegen. Dann akzeptiere.
+		\end{enumerate}
+	\subsection*{Speicherbedarf}
+		Der Speicherbedarf liegt offentsichtlich hier bei $2\cdot \vert x \vert$. Einmal zur Speicherung des Eingabewortes $ ww^{-1}$ auf Band 1 und einmal um das Invertiere Eingabewort, also $x^{-1}$ auf Band 2 zu speichern.
+	\subsection*{Laufzeit}
+		Die Ausgangssituation der Köpfe kann man, wenn nicht schon eingestellt, manuell in $\mathcal{O} (\vert x \vert )$ einstellen (abhängig, wie die Köpfe eben am Anfang stehen). \\
+		Das Kopieren das Zeichens unter $k1$ auf $k2$ geht in konstanter Zeit. \\
+		Dann wird $k1$ und $k2$ insgesamt $\vert x \vert$ Mal verschoben, also liegt unser Vorgang, um $x$ invertiert auf Band 2 zu schreiben in $\mathcal{O} (\vert x \vert )$. \\
+		Unsere Überprüfung, ob das Eingabewort wirklich ein Palidrom wie in der Aufgabenstellung definiert ist geht auch in $\mathcal{O} (\vert x \vert )$, da wir das Wort nur von Rechts nach Links durchgehen.\\
+		Unsere gesamte Laufzeit liegt somit auch in $\mathcal{O} (\vert x \vert )$.
+	
+	\newpage
+	
+	\section*{Aufgabe 6}
+	
+	\newpage
+	
+	\section*{Aufgabe 7}
+	\begin{enumerate}[label=\alph*)]
+	\item 	$R$ ist offensichtlich eine Teilmenge von ${R'}^*$ mit $R' \coloneqq \{a,b,c,*,+,(,),\emptyset \}$.\\
+			Zeigen wir also, dass ${R'}^*$ abzählbar ist, so muss $R$ auch abzählbar sein:\\
+			Sei $h:R'\rightarrow {0,1,2,3,4,5,6,7}$ (bijektiv) mit:
+			\begin{align*}
+			h(a) &= 0		&	h(b) &= 1		&	h(c) &= 2		&	h(*) &= 3	\\
+			h(+) &= 4		&	h(() &= 5		&	h()) &= 6		&	h(\emptyset ) &= 7
+			\end{align*}
+			Dann gibt es eine surjektive Funktion $f:{R'}^* \rightarrow \mathbb{N}$. Sei hier $r \in {R'}^*$ mit $n \coloneqq \vert r \vert$ und $r = r_1 ... r_n$ mit ${\forall}_{i\in 1...n}: r_i \in R'$: \\
+			\[f(r) = \sum_{i=0}^{n} h(r_i) \cdot 8^i\]
+			Damit ist also ${R'}^*$ abzählbar, wodurch auch $R$ abzählbar sein muss.
+			
+	\item	
+	\item	
+	\end{enumerate}
+\end{document}
+

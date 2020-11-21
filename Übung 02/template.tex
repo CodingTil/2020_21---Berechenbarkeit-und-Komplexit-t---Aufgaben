@@ -93,7 +93,7 @@
 		\item Kopf $k1$ für Band 1 liegt auf dem ersten Zeichen von $x$, Kopf $k2$ für Band 2 liegt über dem letzten Zeichen von $x$ (Kann man auch in $\mathcal{O} (\vert x \vert )$ einstellen).
 		\end{itemize}
 	\subsection*{Funktionsweise}
-		\begin{enumerate}
+		\begin{enumerate}[label=\arabic*.]
 		\item Lese Zeichen $(x)_i$ von $k1$ und schreibe es auf $k2$.
 		\item Schiebe $k1$ nach Rechts, $k2$ nach links.
 		\item Gehe zu $1)$, falls $k1$ nicht auf $B$ liegt.
@@ -129,7 +129,35 @@
 			Damit ist also ${R'}^*$ abzählbar, wodurch auch $R$ abzählbar sein muss.
 			
 	\item	
-	\item	
+	
+\newpage	
+	
+	\item	Aus Fosap wissen wir, dass man einen regulären Ausdruck $r$ in einen NFA umwandeln kann und damit für ein Wort $x$ entscheiden kann, ob $x \in L(r)$ gilt. Also gibt es auch eine TM $NFA_{conv}$, welche einen für einen gegebenen regulären Ausdruck $r$ eine Gödelnummer $<R>$ berechnen kann, sodass $<R>$ unseren regulären Ausdruck als NFA simuliert. Für unseren Algorithmus benötigen wir also noch eine Universalturingmaschine $NFA_{sim}$, welche eine solche Gödelnummer mit einem Wort $<R>x$ entgegennimmt und genau dann akzeptiert, wenn $x\in L(r)$ und sonst verwirft.\\
+			Unser Algorithmus für eine TM T, welche $A_i$ entscheidet, sieht also wie folgt aus:
+			\begin{enumerate}[label=\arabic*.]
+			\item	Übergebe Eingabe $a^i$ an eine TM, welche die Anzahl an $a$'s zählt und diese dann ausgibt. Diese TM verwirft, wenn ein Fehler auftritt (z.B. anderes Zeichen als $a$), aber die gesamte TM $T$ akzeptiert dann.
+			\item	Übergebe $i$ an eine wie in der Teilaufgabe beschriebene TM, die wir $M$ nennen. $M$ berechnet uns also aus $i$ den regulären Ausdruck $r_i$.
+			\item	Den regulären Ausdruck geben wir nun weiter an $NFA_{conv}$, welche uns also die Gödelnummer $<R_i>$ einer TM zurückgibt, welche einen NFA über $r_i$ simuliert.
+			\item	Anschließend übergeben wir $NFA_{sim}$ die Gödelnummer und das Eingabewort: $<R_i>a^i$
+			\item	Im letzten Schritt invertieren wir nun das Ergebnis: Wenn also $a^i \in L(r_i)$ gilt, sollen wir verwerfen, sonst akzeptieren
+			\end{enumerate}
+	\subsection*{Korrektheit}
+	Nehmen wir an unsere Eingabe besteht nur aus der Form $a^i$, sonst würden wir eh akzeptieren, wodurch die Eingabe in A wäre.
+	\begin{align*}
+	a^i \in A	& \Rightarrow \text{Schritt 1. gibt uns } i \\
+				& \Rightarrow \text{M berechnet uns } r_i \\
+				& \Rightarrow NFA_{conv} \text{ berechnet } <R_i> \\
+				& \Rightarrow NFA_{sim} \text{ verwirft} \\
+				& \Rightarrow T \text{ akzeptiert}
+	\end{align*}
+	\begin{align*}
+	a^i \not\in A	& \Rightarrow \text{Schritt 1. gibt uns } i \\
+					& \Rightarrow \text{M berechnet uns } r_i \\
+					& \Rightarrow NFA_{conv} \text{ berechnet } <R_i> \\
+					& \Rightarrow NFA_{sim} \text{ akzeptiert} \\
+					& \Rightarrow T \text{ verwirft}
+	\end{align*}
+	Damit entscheidet also $T$ die Sprache $A$.
 	\end{enumerate}
 \end{document}
 

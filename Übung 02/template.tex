@@ -73,6 +73,8 @@
 \definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
 
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{wasysym}
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
 \ihead{BuK WS 2020/21 \\ Tutorium 99 \\\today}
@@ -112,6 +114,39 @@
 	\newpage
 	
 	\section*{Aufgabe 6}
+	\[\sqrt{2^n}=2^{\frac{n}{2}} \Rightarrow \text{Exponentiell in } \frac{n}{2}\]
+	Idee: Ich lade die Zahl $2^{\frac{n}{2}}$ und zähle dann bis $0$ herunter:
+	\begin{lstlisting}
+	// 1. Teil: Laden die Zahl 2^(n/2)
+	1: CLOAD 1
+	2: STORE 2
+	3: LOAD 1
+	4: IF c(0) = 0 THEN GOTO 11
+	5: CDIV 4
+	6: STORE 1
+	7: LOAD 2
+	8: CMUL 2
+	9: STORE 2
+	10: GOTO 3
+	// 2. Teil: Bis 0 runterzaehlen
+	11: LOAD 2
+	12: IF c(0) = 0 THEN GOTO 15
+	13: CSUB 1
+	14: GOTO 12
+	15: END
+	\end{lstlisting}
+	
+	\subsection*{Uniformes Kostenmaß}
+	Obda: $m=2^n$. Für $2^n < m > 2^n-1$ führt es zum selben Ergebnis wie $m=2^n$.\\
+	Nach dem $i$-ten Durchlauf der Schleife im 1. Teil ist $m=2^{n-2i}$ und $c(2) = 2^i4$. \\
+	Wenn Zeile 11 erreicht wird, ist $c(2) = 2^{\frac{n}{2}}$.\\
+	Die Laufzeit von Teil 1 ist offensichtlich linear in $n$, da die Schleife $\frac{n}{2}$ mal durchlaufen wird.\\
+	Die Laufzeit von Teil 2 hingegen liegt in $2^{\frac{n}{2}}$, da die Schleife auch $2^{\frac{n}{2}}$ mal durchlaufen wird.\\
+	Also liegt die Gesamtlaufzeit in $2^{\frac{n}{2}}$.
+	
+	\subsection*{Logarithmisches Kostenmaß}
+	Die Laufzeit des 1. Teils liegt in $\frac{n}{2} * n$, da bei jedem der $\frac{n}{2}$ Schleifendurchläufe die Zahl zwei mal nach rechts geshiftet werden muss (lineare Laufzeit). \\
+	Die Laufzeit des 2. Teils liegt in $2^{\frac{n}{2}} * n$, da bei jedem der $2^{\frac{n}{2}}$ Schleifendurchläufe um die Zahl $1$ subtrahiert wird (lineare Laufzeit).
 	
 	\newpage
 	
@@ -128,7 +163,13 @@
 			\[f(r) = \sum_{i=0}^{n} h(r_i) \cdot 8^i\]
 			Damit ist also ${R'}^*$ abzählbar, wodurch auch $R$ abzählbar sein muss.
 			
-	\item	
+	\item	Beweis, dass $A$ nicht regulär ist durch Diagonalisierung:\\
+			Angenommen es gibt einen  regulären Ausdruck $r_i$, sodass $L(r_i)=A$ gilt. Dann gibt es für das Wort $a^i$ zwei Fälle:
+			\begin{enumerate}[label=\arabic*)]
+				\item $a^i$ ist in $A \Rightarrow a^i$ ist in $L(r_i) \Rightarrow a^i$ ist nicht in $A$ \lightning  Widerspruch
+			\item $a^i$ ist nicht in $A \Rightarrow a^i$ ist nicht in $L(r_i) \Rightarrow a^i$ ist in $A$ \lightning  Widerspruch
+			\end{enumerate}
+			Also ist $A$ nicht regulär.
 	
 \newpage	
 	

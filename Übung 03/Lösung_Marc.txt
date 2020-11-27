@@ -1,0 +1,38 @@
+Aufgabe 4)
+a) L = {<M>w$q | M erreicht den Zustand q für Eingabe w} wobei w, $ und q folgenderweise kodiert wird: 0 -> 00; 1 -> 01 und $ -> 11
+   Diese Sprache ist nicht entscheidbar, da ansonsten das allgemeine Halteproblem lösbar wäre indem man als Zustand den Endzustand angibt.
+   Korrektheit: Falls <M>w$q in L => M erreicht mit Eingabe w den Endzustand => w terminiert
+		Falls <M>w$q nicht in L => M erreicht mit Eingabe w den Endzustand nie => w terminiert nie.
+   Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.
+
+b) L = {<M>w | M schreibt jemals die Eingabe # auf das Band}
+   Diese Sprache ist nicht entscheidbar, da ansonsten das allgemeine Halteproblem lösbar wäre.
+   Vorgehensweise: Erweitere das Alphabet der Sprache um einen Buchstaben, nennen wir ihn mal $
+		   Dann ersetze in der TM jedes vorkommen von # durch $.
+		   Füge zwei neue Zustände in der TM hinzu die ganz am Anfang der Ausführung das Eingabewort einmal ganz durchlaufen und jegliche Vorkommen von # durch $ ersetzen. Der zweite Zustand bewegt den Lesekopf wieder zum Anfang der Eingabe und ruft dann den ursprünglichen ersten Zustand der TM auf.
+		   Füge einen weiteren Zustand hinzu der # auf das Band schreibt und dann den Endzustand aufruft.
+		   Ersetze alle Vorkommen des Endzustands durch diesen neuen Zustand (ausser in diesem Endzustand selbst)
+		   Wenn diese neue TM für ein bestimmtes Wort w in L liegt, dann terminiert die ursprüngliche TM auf w.
+   Korrektheit: Für M' ist nach der oben gegebenen Beschreibung generierten TM aus M
+		Falls <M'>w in L => M' erreicht Endzustand nicht => M erreicht mit Eingabe w Endzustand => M terminiert
+		Falls <M'>w nicht in L => M' erreicht Endzustand nicht => M erreicht mit Eingabe w Endzustand nicht => M terminiert nicht
+   Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.
+
+c) L = {<M> | M schreibt mit leerer Eingabe einen Buchstaben != B auf das Band}
+   Diese Sprache ist entscheidbar.
+   Beweise: Sei n = |Alphabet|
+	Wir simulieren die TM n Schritte und dann ergeben sich mehrere Möglichkeiten:
+	- M hat vorher einen Buchstaben != B geschrieben => Akzeptieren
+	- M hat terminiert ohne einen Buchstaben != B geschrieben zu haben => Ablehnen
+	- M hat noch nicht terminiert und noch keinen Buchstaben != B geschrieben. Da es mehr Schritte gab als Zustände muss sich die TM nun in einem Zustand befinden in dem sie sich schonmal befunden hat. Also befindet sich die TM in einer Endloschleife von der wir schon wissen, dass kein Buchstabe != B geschrieben wird. => Ablehnen
+   Korrektheit: ???
+   Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.
+
+Aufgabe 5)
+a) Per Definition leer. Wenn die Sprache durch eine TM definiert ist, dann gibt es logischerweise eine TM die diese Sprache erkennt und somit ist die Sprache entscheidbar
+   Da die Sprache leer ist, ist die Sprache nicht rekursiv.
+b) Satz von Rice: Bei der gegebenen Sprache handelt es sich um eine nicht trivialer Teilmenge aller Berechnungsprobleme, da es eine Sprache gibt die in der Sprache liegt (z.B. die TM die immer 1 ausgibt) und eine die ausserhalb der Sprache gibt (z.B. die TM die das EIngabewort ausgibt. Da das Eingabewort nicht beschränkt ist gibt es kein c).
+Also lässt sich festlegen, dass es keine TM gibt die entscheiden kann, ob die Länge aller Ausgaben einer TM durch eine konstante c beschränkt ist.
+
+Aufgabe 6)
+M gerät in eine Endlosschleife falls sich eine Konfiguration wiederholt. Es gibt |Q| * |Gamma|^s(n) * s(n) verschiedene Konfigurationen wenn das zu nutzende Band auf die Stellen 1..s(n) limitiert wird, da eine Konfiguration durch den Zustand der TM, dem Wort auf dem Band und der Position des Lesekopfes auf dem Band definiert ist. Da es |Q| Zustände gibt, |Gamma|^s(n) mögliche verschiedene Bänder gibt und s(n) mögliche Lesekopfpositionen ist die Multiplikation all dieser Faktoren die maximale Anzahl verschiedener Konfigurationen. Also muss die TM nach höchstens so vielen Schritten um nicht in eine Endlosschleife zu geraten.

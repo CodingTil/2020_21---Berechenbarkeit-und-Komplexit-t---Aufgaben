@@ -89,68 +89,68 @@
 	
 	% Hier geht die eigentliche Lösung der Aufgaben los
 	
-	\section*{Aufgabe 1}
-	
-	Das \LaTeX{}-Kompendium auf Wikibooks\footnote{\url{https://de.wikibooks.org/wiki/LaTeX-Kompendium}} ist eine gute Einführung.
-	Für die Zusammenarbeit bietet sich das RWTH Gitlab an\footnote{\url{https://git.rwth-aachen.de}}.
-	
-	
-	\section*{Aufgabe 2}
-	
-	Als \LaTeX{}-Editor bzw. -IDE ist TeXStudio \footnote{\url{https://www.texstudio.org/}} ein guter Kandidat.
-	
-
-	
-	\section*{Aufgabe 3}
-	
-		Für Teilaufgaben kann man Aufzählungen verwenden:
-	\begin{itemize}
-		\item als Aufzählung
-		\item ohne Nummerierung,
-	\end{itemize}
-	oder auch
-	\begin{enumerate}
-		\item mit
-		\item Nummerierung.
+	\section*{Aufgabe 4}
+	\begin{enumerate}[label=\alph*)]
+	\item 	$L = \{<M>w\$q \vert M \text{ erreicht den Zustand } q \text{ für Eingabe } w\}$, wobei $w, \$ \text{ und } q$ folgendermaßen kodiert wird: $0 \rightarrow 00; 1 \rightarrow 01 \text{ und } \$ \rightarrow 11$.\\
+			Diese Sprache ist nicht entscheidbar, da ansonsten das allgemeine Halteproblem lösbar wäre, indem man als Zustand den Endzustand angibt.\\
+			Korrektheit: 
+			\begin{itemize}
+			\item Falls $<M>w\$q \in L \Rightarrow M \text{ erreicht mit Eingabe } w \text{ den Endzustand } \Rightarrow w \text{ terminiert}$
+			\item Falls $<M>w\$q \not\in L \Rightarrow M \text{ erreicht mit Eingabe } w \text{ den Endzustand nie } \Rightarrow w \text{ terminiert nie}$
+			\end{itemize}
+			Vorher muss natürlich immer die Eingabe auf Korrekte Formatierung geprüft werden.
+			
+	\item	$L = \{<M>w \vert M \text{ schreibt jemals die Eingabe } \# \text{ auf das Band}\}$\\
+			Diese Sprache ist nicht entscheidbar, da ansonsten das Allgemeine Halteproblem lösbar wäre.\\
+			Vorgehensweise:
+			\begin{center}
+			Erweitere das Alphabet der Sprache um einen Buchstaben, nennen wir ihn mal $\$$.\\
+			Dann ersetze in der TM jedes Vorkommen von $\#$ durch $\$$\\
+			Füge zwei neue Zuständer in der TM hinzu, die ganz am Anfang der Ausführung das Eingabewort einmal ganz durchlaufen und jegliche Vorkommen von $\#$ durch $\$$ ersetzen. Der zweite Zustand bewegt den Lesekopf wieder zum Anfang der Eingabe und ruft dann den ursprünglichen ersten Zustand der TM auf.\\
+			Füge einen weitere Zustand hinzu der $\#$ auf das Band schreibt und dann den Endzustand aufruft.\\
+			Ersetze alle Vorkommen des Endzustandes durch diesen neuen Zustand (außer in diesem Endzustand selbst)\\
+			Wenn diese neue TM für ein bestimmtes Wort $w$ in $L$ liegt, dann terminiert die ursprüngliche TM auf w.
+			\end{center}
+			Korrektheit:
+			\begin{center}
+			Für $M'$ ist nach der oben gegebenen Beschreibung generierten TM aus M:
+			\end{center}
+			\begin{itemize}
+			\item Falls $<M'>w \in L => M'$ erreicht Endzustand $=> M$ erreicht mit Eingabe $w$ Endzustand $=> M$ terminiert
+			\item Falls $<M'>w \not\in L => M'$ erreicht Endzustand nicht $=> M$ erreicht mit Eingabe $w$ Endzustand nicht $=> M$ terminiert
+			\end{itemize}
+			Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.	
+		
+	\item	$L = \{<M> \vert M \text{ schreibt mit leerer Eingabe einen Buchstaben } \neq B \text{ auf das Band}\}$\\
+			Diese Sprache ist entscheidbar.\\
+			Beweise: Sei $n = \vert \Sigma \vert$\\
+			Wir simulieren die TM $n$ Schritte und dann ergeben sich mehrere Möglichkeiten:
+			\begin{itemize}
+			\item M hat vorher einen Buchstaben $\neq B$ geschrieben $\Rightarrow$ Akzeptieren
+			\item M hat keinen Buchstaben $\neq B$ geschrieben und terminiert $\Rightarrow$ Verwerfen
+			\item M hat keinen Buchstaben $\neq B$ geschrieben und noch nicht terminiert
+				\begin{itemize}
+				\item[$\Rightarrow$] Da es mehr Schritte gab als Zustände muss sich die TM nun in einem Zustand befinden, in dem sie sich schonmal befunden hat. Also befindet sich die TM in einer Endlosschleife, von der wir schon wissen, dass kein Buchstabe $\neq B$ geschrieben wird
+				\item[$\Rightarrow$] Verwerfen
+				\end{itemize}
+			\end{itemize}
+			Korrektheit: ??\\
+			Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.
 	\end{enumerate}
 	
-	\section*{Aufgabe 4}
 	
-	Kleine Diagramme lassen sich ebenfalls erstellen, zum Beispiel:
+	\section*{Aufgabe 5}
+	\begin{enumerate}[label=\alph*)]
+	\item 	Per Definition leer. Wenn die Sprache durch eine TM definiert ist, dann gibt es logischerweise eine TM die diese Sprache erkennt und somit ist die Sprache entscheidbar.\\
+   			Da die Sprache leer ist, ist die Sprache nicht rekursiv.
+   	\item 	Satz von Rice: \\
+   			Bei der gegebenen Sprache handelt es sich um eine nicht trivialer Teilmenge aller Berechnungsprobleme, da es eine Sprache gibt die in der Sprache liegt (z.B. die TM die immer 1 ausgibt) und eine die außerhalb der Sprache gibt (z.B. die TM die das Eingabewort ausgibt. Da das Eingabewort nicht beschränkt ist gibt es kein c).\\
+			Also lässt sich festlegen, dass es keine TM gibt die entscheiden kann, ob die Länge aller Ausgaben einer TM durch eine konstante c beschränkt ist.
+	\end{enumerate}
 	
-	\begin{center}
-		\begin{tikzpicture}
-		\node (1) {$v_1$};
-		\node [right of=1] (2) {$v_2$};
-		\node [below of=2] (3) {$v_3$};
-		\draw (1) -- (2);
-		\draw (1) -- (3);
-		\end{tikzpicture}
-	\end{center}
 	
-	oder auch etwas komplizierter:
-	
-	\begin{center}
-		% Stil festlegen, der dann für alle Knoten verwendet wird
-		\tikzset{dot/.style={circle, draw=black, fill=black, inner sep=0pt, minimum size=5pt}}
-		% Das eigentlich Diagramm
-		\begin{tikzpicture}[node distance=1.5cm]
-		\node [dot,label={left:$v$}] (1) {};
-		\node [dot,right of=1] (2) {};
-		\node [dot,below of=2,label={right:$w$}] (3) {};
-		\node [dot,below of=1] (4) {};
-		\path [draw=black, ->, >=stealth', shorten <=2pt, shorten >=2pt] % Optionen nur für das Aussehen
-		(1) edge (3)
-		(1) edge (4)
-		(2) edge (3)
-		(4) edge [loop left] ()
-		(1) edge node [above] {$e$} (2);
-		\end{tikzpicture}
-	\end{center}
-	
-	Alternativ können auch externe Dateien eingebunden werden (z.B.\ Bildformate, PDF).
-	% Dazu ganz oben das Paket graphicx einbinden: \usepackage{graphicx}
-	% und an der entsprechenden Stelle dann die Grafik laden: \includegraphics{datei}
-	
+	\section*{Aufgabe 6}
+	$M$ gerät in eine Endlosschleife, falls sich eine Konfiguration wiederholt. Es gibt $\vert Q \vert \cdot {\vert \Gamma \vert }^{s(n)} \cdot s(n)$ verschiedene Konfigurationen, wenn das zu nutzende Band auf die Stellen $1..s(n)$ limitiert wird, da eine Konfiguration durch den Zustand der TM, dem Wort auf dem Band und der Position des Lesekopfes auf dem Band definiert ist. Da es $\vert Q \vert$ Zustände gibt, ${\vert \Gamma \vert}^{s(n)}$ mögliche verschiedene Bänder gibt und $s(n)$ mögliche Lesekopfpositionen, ist die Multiplikation all dieser Faktoren die maximale Anzahl verschiedener Konfigurationen.\\
+	Also muss die TM nach höchstens so vielen Schritten, um nicht in eine Endlosschleife zu geraten, terminieren.
 \end{document}
 

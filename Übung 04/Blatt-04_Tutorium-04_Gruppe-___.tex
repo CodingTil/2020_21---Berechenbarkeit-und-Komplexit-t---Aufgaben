@@ -89,15 +89,15 @@
 	\item	Der Satz von Rice ist hier nicht anwendbar, denn hier geht es darum, \textbf{wie} etwas berechnet wird, und nicht \textbf{was}.\\
 			Die Sprache $L_1$ ist rekursiv und kann durch eine TM $M'$ wie folgt entschieden werden:
 			\begin{enumerate}[label=\arabic*)]
-			\item Berechne $(x \coloneqq 2^{\vert \langle M \rangle \vert} - 1) - 1$
+			\item Berechne $x \coloneqq (2^{\vert \langle M \rangle \vert} - 1) - 1$
 			\item Simuliere $M$ für $x$ Schritte
 			\item Falls $M$ terminiert, soll $M'$ verwerfen\\
 				  Falls $M$ nicht terminiert hat, soll $M'$ akzeptieren
 			\end{enumerate}
 			Korrektheit:
 			\begin{itemize}
-			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält nicht in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1)$ Schritten $\Rightarrow$ $M'$ verwirft
-			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1)$ Schritten $\Rightarrow$ $M'$ akzeptiert
+			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält nicht in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1$ Schritten $\Rightarrow$ $M'$ verwirft
+			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1$ Schritten $\Rightarrow$ $M'$ akzeptiert
 			\end{itemize}
 	
 	\item	Der Satz von Rice ist hier anwendbar, da es um eine partielle Funktion geht.\\
@@ -110,7 +110,7 @@
 			$S \neq R$, da es in $R$ eine TM $M''$ gibt, die jede Eingabe löscht und dann genau eine $0$ schreibt.\\
 			Gemäß Satz von Rice ist $L_2$ nicht entscheidbar.
 	
-	\item	Nicht entscheidbar
+	\item	
 	
 	\end{enumerate}
 	
@@ -120,7 +120,7 @@
 	\item	Sei $A$ ein Aufzähler von $L$ mit Ausgabeband ${Ausgabe}_A$. Dann gibt es auch seinen Sparsamen Aufzähler $SA$ mit:
 			\begin{itemize}
 			\item A
-			\item Ausgabeband ${Ausgabe}_SA$
+			\item Ausgabeband ${Ausgabe}_{SA}$
 			\end{itemize}
 			Unser Sparsame Aufzähler geht nun wie folgt vor:
 			\begin{enumerate}[label=\arabic*)]

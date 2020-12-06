@@ -110,7 +110,15 @@
 			$S \neq R$, da es in $R$ eine TM $M''$ gibt, die jede Eingabe löscht und dann genau eine $0$ schreibt.\\
 			Gemäß Satz von Rice ist $L_2$ nicht entscheidbar.
 	
-	\item	
+	\item	Der Satz von Rice ist hier anwendbar, da es um eine partielle Funktion geht.\\
+			\begin{align*}
+			S &=\{f_M \vert f_M(\langle M' \rangle) = 1 \text{ für alle TM } M' \text{, die 3 Zustände haben}\}\\
+			L_3 &= L(S) = \{\langle M \rangle \vert M \text{ berechnet eine Funktion aus } S\}\\
+				&= \{\langle M \rangle \vert M \text{ berechnet auf Eingabe } \langle M' \rangle \text{ den Wert } 1 \text{ für alle TM } M' \text{ mit 3 Zuständen}\}
+			\end{align*}
+			$S \neq \emptyset$, da es in $S$ eine TM $M_1$ gibt, die für jede Eingabe $1$ ausgibt.\\
+			$S \neq R$, da es in $R$ eine TM $M_0$ gibt, die für jede Eingabe $0$ ausgibt.\\
+			Gemäß Satz von Rice ist $L_3$ nicht entscheidbar.
 	
 	\end{enumerate}
 	
@@ -146,11 +154,17 @@
 	
 	
 	\section*{Aufgabe 6}
-	Das Allgemeine Halteproblem $H_{all} \coloneqq \{\langle M \rangle \vert M \text{ hält auf jeder Eingabe}\}$ ist eine echte Obermenge von $L$, da:
-	\begin{itemize}
-	\item Alle $\langle M \rangle \in H_{all}$ entscheiden eine rekursive Sprache, da sie ja auf jeder Eingabe halten.
-	\item Aus der Vorlesung ist bekannt, dass $H_{all}$ nicht rekursiv aufzählbar ist. Da aber jedes $L$ rekursiv aufzählbar ist, muss es immer eine TM $M'$ geben, mit $\langle M' \rangle \in H_{all}, \langle M' \rangle \not\in L$.
-	\end{itemize}
+		Wir definieren die Diagonalsprache $D = \{w \in \{0, 1\}^* \vert w = w_i \text{ und } M_i \text{ akzeptiert w nicht}\}$ wobei  $M_i$ das i-te Wort der Sprache $L$ ist.
+		Diese Sprache ist auf jeden Fall entscheidbar weil ich für jede Eingabe w einfach das $i$ finden kann, dann $M_i$ simulieren kann und dann das Ergebnis einfach negieren.
+
+		Trotzdem ist diese Sprache auf jeden Fall nicht in L.
+		Angenommen es gäbe eine Sprache $M_j \in L$ die dieses D erkennt.
+		
+		Fall 1: $w_j \in D \Rightarrow M_j \text{ akzeptiert w } \Rightarrow w_j \not\in D$
+
+		Fall 2: $w_j \not\in D \Rightarrow M_j \text{ akzeptiert w nicht } \Rightarrow w_j \in D$
+
+		Da beide Fälle zum Widerspruch führen ist die Annahme falsch in somit ist die Diagonalsprache nicht in L.
 	
 \end{document}
 

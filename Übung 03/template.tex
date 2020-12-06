@@ -102,15 +102,13 @@
 			
 	\item	$L = \{<M>w \vert M \text{ schreibt jemals die Eingabe } \# \text{ auf das Band}\}$\\
 			Diese Sprache ist nicht entscheidbar, da ansonsten das Allgemeine Halteproblem lösbar wäre.\\
-			Vorgehensweise:
-			\begin{center}
+			Vorgehensweise:\\
 			Erweitere das Alphabet der Sprache um einen Buchstaben, nennen wir ihn mal $\$$.\\
 			Dann ersetze in der TM jedes Vorkommen von $\#$ durch $\$$\\
 			Füge zwei neue Zuständer in der TM hinzu, die ganz am Anfang der Ausführung das Eingabewort einmal ganz durchlaufen und jegliche Vorkommen von $\#$ durch $\$$ ersetzen. Der zweite Zustand bewegt den Lesekopf wieder zum Anfang der Eingabe und ruft dann den ursprünglichen ersten Zustand der TM auf.\\
 			Füge einen weitere Zustand hinzu der $\#$ auf das Band schreibt und dann den Endzustand aufruft.\\
 			Ersetze alle Vorkommen des Endzustandes durch diesen neuen Zustand (außer in diesem Endzustand selbst)\\
 			Wenn diese neue TM für ein bestimmtes Wort $w$ in $L$ liegt, dann terminiert die ursprüngliche TM auf w.
-			\end{center}
 			Korrektheit:
 			\begin{center}
 			Für $M'$ ist nach der oben gegebenen Beschreibung generierten TM aus M:
@@ -123,7 +121,7 @@
 		
 	\item	$L = \{<M> \vert M \text{ schreibt mit leerer Eingabe einen Buchstaben } \neq B \text{ auf das Band}\}$\\
 			Diese Sprache ist entscheidbar.\\
-			Beweise: Sei $n = \vert \Sigma \vert$\\
+			Beweise: Sei $n = \vert Q \vert$\\
 			Wir simulieren die TM $n$ Schritte und dann ergeben sich mehrere Möglichkeiten:
 			\begin{itemize}
 			\item M hat vorher einen Buchstaben $\neq B$ geschrieben $\Rightarrow$ Akzeptieren
@@ -134,7 +132,17 @@
 				\item[$\Rightarrow$] Verwerfen
 				\end{itemize}
 			\end{itemize}
-			Korrektheit: ??\\
+			Korrektheit:
+				\begin{itemize}
+				\item	Terminiert in n Schritten + einen Buchstaben $\neq B$ geschrieben:\\
+						$\Rightarrow$ Ablesen $\Rightarrow$ Akzeptieren
+				\item 	Terminiert nicht in n Schritten + einen Buchstaben $\neq B$ geschrieben:\\
+						$\Rightarrow$ Ablesen $\Rightarrow$ Akzeptieren
+				\item	Terminiert in n Schritten + keinen Buchstaben $\neq B$ geschrieben:\\
+						$\Rightarrow$ Ablesen $\Rightarrow$ Verwerfen
+				\item 	Terminiert nicht in n Schritten + keinen Buchstaben $\neq B$ geschrieben:\\
+						$\Rightarrow$ Endlosschleife (nach Begründung von der Vorgehensweise folgt, dass auch nie mehr ein Buchstabe $\neq B$ gedruckt wird $\Rightarrow$ Verwerfen
+				\end{itemize}
 			Vorher muss natürlich immer die Eingabe auf korrekte Formatierung geprüft werden.
 	\end{enumerate}
 	

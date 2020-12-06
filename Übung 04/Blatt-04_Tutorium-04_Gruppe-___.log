@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  29 NOV 2020 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  6 DEC 2020 13:27
 entering extended mode
-**./template.tex
-(template.tex
+**./Blatt-04_Tutorium-04_Gruppe-___.tex
+(Blatt-04_Tutorium-04_Gruppe-___.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-10-27> xparse <2020-03-03>
 ("C:\Program Files\MiKTeX 2.9\tex/latex/koma-script\scrartcl.cls"
@@ -963,8 +963,8 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count320
 \l__pdf_internal_box=\box110
 )
-(template.aux)
-\openout1 = `template.aux'.
+(Blatt-04_Tutorium-04_Gruppe-___.aux)
+\openout1 = `Blatt-04_Tutorium-04_Gruppe-___.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
 LaTeX Font Info:    ... okay on input line 86.
@@ -1033,9 +1033,9 @@ LaTeX Info: Redefining \ref on input line 86.
 LaTeX Info: Redefining \pageref on input line 86.
 LaTeX Info: Redefining \nameref on input line 86.
 
-(template.out) (template.out)
+(Blatt-04_Tutorium-04_Gruppe-___.out) (Blatt-04_Tutorium-04_Gruppe-___.out)
 \@outlinefile=\write4
-\openout4 = `template.out'.
+\openout4 = `Blatt-04_Tutorium-04_Gruppe-___.out'.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -1091,7 +1091,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 94.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
@@ -1100,7 +1100,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ("C:\Program Files\MiKTeX 2.9\tex/latex/microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 94.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
@@ -1109,50 +1109,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ("C:\Program Files\MiKTeX 2.9\tex/latex/microtype\mt-msb.cfg"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Overfull \hbox (16.18611pt too wide) in paragraph at lines 122--127
-[]$\OML/cmm/m/it/10.95 L \OT1/cmr/m/n/10.95 (-20) = \OMS/cmsy/m/n/10.95 f\OML/c
-mm/m/it/10.95 < M > \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 M[] \OMS/cmsy/m/n/
-10.95 6\OT1/cmr/m/n/10.95 (-20) = \OML/cmm/m/it/10.95 B[]\OMS/cmsy/m/n/10.95 g$
- 
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
  []
 
 [1{C:/Users/Til Mohr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-[2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     163.
+(LaTeX3)     142.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     163.
+(LaTeX3)     142.
 
- (template.aux)
-Package rerunfilecheck Info: File `template.out' has not changed.
+
+(Blatt-04_Tutorium-04_Gruppe-___.aux)
+Package rerunfilecheck Info: File `Blatt-04_Tutorium-04_Gruppe-___.out' has not
+ changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25378 strings out of 479799
- 511440 string characters out of 2877687
- 1010642 words of memory out of 3000000
- 41877 multiletter control sequences out of 15000+200000
- 543372 words of font info for 76 fonts, out of 3000000 for 9000
+ 25365 strings out of 479799
+ 511735 string characters out of 2877687
+ 1010759 words of memory out of 3000000
+ 41879 multiletter control sequences out of 15000+200000
+ 543170 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,20n,111p,10698b,742s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 108i,20n,111p,10721b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Til Mohr\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
-00\tcrm1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb>
-Output written on template.pdf (2 pages, 104790 bytes).
+00\tcrm1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb>
+Output written on Blatt-04_Tutorium-04_Gruppe-___.pdf (1 page, 113359 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
- 11277 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 75 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
+ 11789 words of extra memory for PDF output out of 12000 (max. 10000000)
 

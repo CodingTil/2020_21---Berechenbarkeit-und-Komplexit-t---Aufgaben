@@ -1,0 +1,143 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
+\chead{\Large Übungsblatt 04}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	\section*{Aufgabe 4}
+	\begin{enumerate}[label=(\alph*)]
+	\item	Der Satz von Rice ist hier nicht anwendbar, denn hier geht es darum, \textbf{wie} etwas berechnet wird, und nicht \textbf{was}.\\
+			Die Sprache $L_1$ ist rekursiv und kann durch eine TM $M'$ wie folgt entschieden werden:
+			\begin{enumerate}[label=\arabic*)]
+			\item Berechne $(x \coloneqq 2^{\vert \langle M \rangle \vert} - 1) - 1$
+			\item Simuliere $M$ für $x$ Schritte
+			\item Falls $M$ terminiert, soll $M'$ verwerfen\\
+				  Falls $M$ nicht terminiert hat, soll $M'$ akzeptieren
+			\end{enumerate}
+			Korrektheit:
+			\begin{itemize}
+			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält nicht in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1)$ Schritten $\Rightarrow$ $M'$ verwirft
+			\item Falls $\langle M \rangle \not\in L_1$ $\Rightarrow$ $M$ hält in weniger als $x \coloneqq 2^{\vert \langle M \rangle \vert} - 1)$ Schritten $\Rightarrow$ $M'$ akzeptiert
+			\end{itemize}
+	
+	\item	Der Satz von Rice ist hier anwendbar, da es um eine partielle Funktion geht.\\
+			\begin{align*}
+			S &=\{f_M \vert f_M(\langle M \rangle) = 1\}\\
+			L_2 &= L(S) = \{\langle M \rangle \vert M \text{ berechnet eine Funktion aus } S\}\\
+				&= \{\langle M \rangle \vert M \text{ berechnet auf Eingabe } \langle M \rangle \text{ den Wert } 1 \}
+			\end{align*}
+			$S \neq \emptyset$, da es in $S$ eine TM $M'$ gibt, die jede Eingabe löscht und dann genau eine $1$ schreibt.\\
+			$S \neq R$, da es in $R$ eine TM $M''$ gibt, die jede Eingabe löscht und dann genau eine $0$ schreibt.\\
+			Gemäß Satz von Rice ist $L_2$ nicht entscheidbar.
+	
+	\item	Nicht entscheidbar
+	
+	\end{enumerate}
+	
+	
+	\section*{Aufgabe 5}
+	\begin{enumerate}[label=(\alph*)]
+	\item	Sei $A$ ein Aufzähler von $L$ mit Ausgabeband ${Ausgabe}_A$. Dann gibt es auch seinen Sparsamen Aufzähler $SA$ mit:
+			\begin{itemize}
+			\item A
+			\item Ausgabeband ${Ausgabe}_SA$
+			\end{itemize}
+			Unser Sparsame Aufzähler geht nun wie folgt vor:
+			\begin{enumerate}[label=\arabic*)]
+			\item $A$ zählt neues Wort $w$ von $L$ auf seinem Band ${Ausgabe}_A$ auf.
+			\item $SA$ ließt nun $w$ und überprüft nun, ob $w$ auf ${Ausgabe}_SA$ schon steht.
+				\begin{itemize}
+				\item[$\rightarrow$] Steht $w$ schon auf ${Ausgabe}_SA$, fahre einfach mit $1)$ fort.
+				\item[$\rightarrow$] Steht $w$ noch nicht auf ${Ausgabe}_SA$, schreibe es dort und fahre mit $1)$ fort.
+				\end{itemize}
+			\end{enumerate}
+			Die Überprüfung, ob ein Wort $w$ bereits auf ${Ausgabe}_SA$ steht, geht ja in linearer Zeit.\\
+			Damit gibt es für jede rekursiv aufzählbare Sprache $L$ einen sparsamen Aufzähler.
+	
+	\item	Nein
+	\end{enumerate}
+	
+	
+	\section*{Aufgabe 6}
+\end{document}
+

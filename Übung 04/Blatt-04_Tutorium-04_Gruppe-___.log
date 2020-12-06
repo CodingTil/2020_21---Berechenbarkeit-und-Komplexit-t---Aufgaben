@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  6 DEC 2020 14:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  6 DEC 2020 14:48
 entering extended mode
 **./Blatt-04_Tutorium-04_Gruppe-___.tex
 (Blatt-04_Tutorium-04_Gruppe-___.tex
@@ -1119,11 +1119,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
 [2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     149.
+(LaTeX3)     154.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     149.
+(LaTeX3)     154.
 
  (Blatt-04_Tutorium-04_Gruppe-___.aux)
 Package rerunfilecheck Info: File `Blatt-04_Tutorium-04_Gruppe-___.out' has not
@@ -1132,7 +1132,7 @@ Package rerunfilecheck Info: File `Blatt-04_Tutorium-04_Gruppe-___.out' has not
  ) 
 Here is how much of TeX's memory you used:
  25370 strings out of 479799
- 511771 string characters out of 2877687
+ 511769 string characters out of 2877687
  1012759 words of memory out of 3000000
  41879 multiletter control sequences out of 15000+200000
  543272 words of font info for 69 fonts, out of 3000000 for 9000
@@ -1149,7 +1149,7 @@ pe1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb>
-Output written on Blatt-04_Tutorium-04_Gruppe-___.pdf (2 pages, 116864 bytes).
+Output written on Blatt-04_Tutorium-04_Gruppe-___.pdf (2 pages, 119412 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  16 named destinations out of 1000 (max. 500000)

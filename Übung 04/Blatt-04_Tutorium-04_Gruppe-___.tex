@@ -125,13 +125,13 @@
 			Unser Sparsame Aufzähler geht nun wie folgt vor:
 			\begin{enumerate}[label=\arabic*)]
 			\item $A$ zählt neues Wort $w$ von $L$ auf seinem Band ${Ausgabe}_A$ auf.
-			\item $SA$ ließt nun $w$ und überprüft nun, ob $w$ auf ${Ausgabe}_SA$ schon steht.
+			\item $SA$ ließt nun $w$ und überprüft nun, ob $w$ auf ${Ausgabe}_{SA}$ schon steht.
 				\begin{itemize}
-				\item[$\rightarrow$] Steht $w$ schon auf ${Ausgabe}_SA$, fahre einfach mit $1)$ fort.
-				\item[$\rightarrow$] Steht $w$ noch nicht auf ${Ausgabe}_SA$, schreibe es dort und fahre mit $1)$ fort.
+				\item[$\rightarrow$] Steht $w$ schon auf ${Ausgabe}_{SA}$, fahre einfach mit $1)$ fort.
+				\item[$\rightarrow$] Steht $w$ noch nicht auf ${Ausgabe}_{SA}$, schreibe es dort und fahre mit $1)$ fort.
 				\end{itemize}
 			\end{enumerate}
-			Die Überprüfung, ob ein Wort $w$ bereits auf ${Ausgabe}_SA$ steht, geht ja in linearer Zeit.\\
+			Die Überprüfung, ob ein Wort $w$ bereits auf ${Ausgabe}_{SA}$ steht, geht ja in linearer Zeit.\\
 			Damit gibt es für jede rekursiv aufzählbare Sprache $L$ einen sparsamen Aufzähler.
 	
 	\item	Angenommen die Aussage gilt für rekursiv aufzählbare Sprachen $L$. Also gibt es für $L$ einen kanonisch-organisierten Aufzähler $koA$. Nun kann man mit $koA$ die Sprache $L$ \textbf{entscheiden}, nicht nur erkennen:\\
@@ -146,5 +146,11 @@
 	
 	
 	\section*{Aufgabe 6}
+	Das Allgemeine Halteproblem $H_{all} \coloneqq \{\langle M \rangle \vert M \text{ hält auf jeder Eingabe}\}$ ist eine echte Obermenge von $L$, da:
+	\begin{itemize}
+	\item Alle $\langle M \rangle \in H_{all}$ entscheiden eine rekursive Sprache, da sie ja auf jeder Eingabe halten.
+	\item Aus der Vorlesung ist bekannt, dass $H_{all}$ nicht rekursiv aufzählbar ist. Da aber jedes $L$ rekursiv aufzählbar ist, muss es immer eine TM $M'$ geben, mit $\langle M' \rangle \in H_{all}, \langle M' \rangle \not\in L$.
+	\end{itemize}
+	
 \end{document}
 

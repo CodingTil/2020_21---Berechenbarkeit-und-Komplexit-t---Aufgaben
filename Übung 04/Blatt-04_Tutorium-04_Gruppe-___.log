@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  6 DEC 2020 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  6 DEC 2020 14:09
 entering extended mode
 **./Blatt-04_Tutorium-04_Gruppe-___.tex
 (Blatt-04_Tutorium-04_Gruppe-___.tex
@@ -1116,28 +1116,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
 [1{C:/Users/Til Mohr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
+[2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     142.
+(LaTeX3)     149.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     142.
+(LaTeX3)     149.
 
-
-(Blatt-04_Tutorium-04_Gruppe-___.aux)
+ (Blatt-04_Tutorium-04_Gruppe-___.aux)
 Package rerunfilecheck Info: File `Blatt-04_Tutorium-04_Gruppe-___.out' has not
  changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25365 strings out of 479799
- 511735 string characters out of 2877687
- 1010759 words of memory out of 3000000
+ 25370 strings out of 479799
+ 511771 string characters out of 2877687
+ 1012759 words of memory out of 3000000
  41879 multiletter control sequences out of 15000+200000
- 543170 words of font info for 67 fonts, out of 3000000 for 9000
+ 543272 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,20n,111p,10721b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 108i,20n,111p,10721b,748s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Til Mohr\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1149,9 +1149,9 @@ pe1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb>
-Output written on Blatt-04_Tutorium-04_Gruppe-___.pdf (1 page, 113359 bytes).
+Output written on Blatt-04_Tutorium-04_Gruppe-___.pdf (2 pages, 116864 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
+ 79 PDF objects out of 1000 (max. 8388607)
+ 16 named destinations out of 1000 (max. 500000)
  11789 words of extra memory for PDF output out of 12000 (max. 10000000)
 

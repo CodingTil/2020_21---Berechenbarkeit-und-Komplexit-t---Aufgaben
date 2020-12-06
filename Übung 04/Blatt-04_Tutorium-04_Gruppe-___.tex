@@ -134,7 +134,14 @@
 			Die Überprüfung, ob ein Wort $w$ bereits auf ${Ausgabe}_SA$ steht, geht ja in linearer Zeit.\\
 			Damit gibt es für jede rekursiv aufzählbare Sprache $L$ einen sparsamen Aufzähler.
 	
-	\item	Nein
+	\item	Angenommen die Aussage gilt für rekursiv aufzählbare Sprachen $L$. Also gibt es für $L$ einen kanonisch-organisierten Aufzähler $koA$. Nun kann man mit $koA$ die Sprache $L$ \textbf{entscheiden}, nicht nur erkennen:\\
+			Sei $w$ das Wort, welches wir überprüfen wollen:
+			\begin{itemize}
+			\item Zählt $koA$ das Wort $w$ auf, so ist $w \in L$ (bekannt).
+			\item Zählt $koA$ das Wort $w$ noch nicht auf, aber ein Wort $w'$, welches in kanonischer Reihenfolge nach $w$ liegt, so wird $w$ auch nie aufgezählt werden. So ist $w \not\in L$.
+			\end{itemize}
+			Damit entscheidet $koA$ $L$. Deswegen muss $L$ rekursiv sein. $\Rightarrow$ Widerspruch \\
+			Also ist die Aussage falsch.
 	\end{enumerate}
 	
 	

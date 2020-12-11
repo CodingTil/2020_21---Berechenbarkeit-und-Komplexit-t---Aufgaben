@@ -1,0 +1,173 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
+\chead{\Large Übungsblatt 04}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	\section*{Aufgabe 4}
+	Da $A \leq B$ gilt und $B$ rekursiv abhängig ist, ist auch $A$ rekursiv abhängig.\\
+	Damit also $A$ entscheidbar ist, muss noch $\bar{A}$ rekursiv abhängig sein.\\
+	Jedoch kann $B \leq \bar{A}$ auch gelten, wenn $\bar{A}$ nicht rekursiv abhängig ist (beispielsweise wenn $B$ nicht rekursiv ist):
+	\begin{align*}
+	B \text{ nicht rekursiv } 	&\Rightarrow \bar{A} \text{ nicht rekursiv} \\
+								&\Rightarrow \bar{A} \text{ nicht rekursiv abhängig}
+	\end{align*}
+	Damit ist auch $A$ nicht immer rekursiv.
+	
+		
+	\section*{Aufgabe 5}
+	
+	
+	\section*{Aufgabe 6}
+	\begin{enumerate}[label=\alph*)]
+	\item	Satz von Rice:
+			\begin{align*}
+			L_{\mathbb{P}} &= \{\langle M \rangle \vert L(M) = \mathbb{P}\} \\
+			S &= \{f_M \vert \forall_{p\in\mathbb{P}}: f_M(p) = 1 \land \forall_{q\not\in\mathbb{P}}: f_M(q) = 0\}		
+			\end{align*}
+			$S \neq R$, da in $S$ nicht die Funktion enthalten ist, die für alle Eingaben $0$ ausgibt.\\
+			$S \neq \emptyset$, da es Algorithmen gibt um zu bestimmen, ob eine bestimmte Zahl $x$ eine Primzahl ist.\\
+			Nach dem Satz von Rice ist also $L_{\mathbb{P}} = L(S)$ nicht rekursiv.
+	\item	
+	\end{enumerate}
+	
+\newpage
+	
+	\section*{Aufgabe 7}
+	rekursiv abhängig = ra, rekursiv = r
+	\begin{enumerate}[label=\alph*)]
+	\item	\begin{itemize}
+			\item[$"\Rightarrow"$]
+				$L$ ra $\Rightarrow$ Es gibt eine TM $M$, die für alle $x\in L$ hält und akzeptiert.\\
+				Angenommen $M$ hält auch für $w\not\in L$ (sonst überspringe diesen Teil), und verwirft diese $w$.\\
+				$\Rightarrow$ Konstruiere TM $M'$, die $M$ simuliert:
+					\begin{itemize}
+					\item $M$ akzeptiert $\Rightarrow$ $M'$ akzeptiert
+					\item $M$ hält nicht $\Rightarrow$ $M'$ hält nicht
+					\item $M$ verwirft $\Rightarrow$ Setze $M'$ in eine Endlosschleife $\Rightarrow$ $M'$ hält nicht
+					\end{itemize}
+				$\Rightarrow$ $L(M)=L(M')$\\
+				$\Rightarrow$ Es gibt also eine partielle berechenbare Funktion f, die von $M'$ (bzw. gleich $M$) berechnet wird\\
+				$\Rightarrow$ $\operatorname{Def}(f)=\{x \vert f(x) \neq \perp\}=L(M')=L(M)=L$
+			
+			\item[$"\Leftarrow"$]
+				$f$ eine partielle berechenbare Funktion mit $L \coloneqq \operatorname{Def}(f)=\{x \vert f(x) \neq \perp\}$\\
+				$\Rightarrow$ Es gibt eine TM $M$, die $f$ berechnet
+				$\Rightarrow$ $L(M)=L$, da:
+					\begin{itemize}
+					\item $M$ hält auf x $\Leftrightarrow$ $f(x) \neq \perp$ $\Leftrightarrow$ $x\in L$
+					\item $M$ hält nicht auf x $\Leftrightarrow$ $f(x) = \perp$ $\Leftrightarrow$ $x\not\in L$
+					\end{itemize}
+				Also ist $L$ ra.
+			\end{itemize}
+			Damit ist die Aussage folglich bewiesen.
+			
+	\item	\begin{itemize}
+			\item[$"\Rightarrow"$]
+				$L$ rekursiv aufzählbar:
+				\begin{enumerate}[label=\arabic*)]
+				\item	Falls  $L = \emptyset$ $\Rightarrow$ $L$ r $\Rightarrow$ $L$ ra\\
+				\item	Falls $L \neq \emptyset$:\\
+						Es gibt ja $h: \Sigma^* \rightarrow \mathbb{N}$.\\
+						Zudem hat die ra Sprache $L$ einen Aufzähler $A$, der Wörter $w \in L$ aufzählt.\\
+						$\Rightarrow$ Es gibt $g: \mathbb{N} \rightarrow L$, die eine Zuordnung von Zahlen zu den Wörter auf dem Ausgabeband von $A$ ist
+						$\Rightarrow$ $f:g(h)$ ist somit eine totale Funktion von $\Sigma^*$ nach $L$
+				\end{enumerate}
+			
+			\item[$"\Rightarrow"$]
+				\begin{enumerate}[label=\arabic*)]
+				\item	$L=\emptyset$ $\Rightarrow$ $L$ r $\Rightarrow$ $L$ ra
+				\item	$f: \Sigma^* \rightarrow L$ solche totale Funktion
+						$\Rightarrow$ Sei $T$ eine TM, die $f$ berechnet für $w \in \Sigma^*$
+						$\Rightarrow$ Sei $Z$ ein Aufzähler von $\Sigma^*$
+						$\Rightarrow$ Sei $T'$ eine TM, die $T$ und $Z$ benutzt, keine Eingaben nimmt, jedes von $Z$ geschriebene Wort in $T$ füttert.
+						$\Rightarrow$ $T'$ ist ein Aufzähler von $L$
+						$\Rightarrow$ $L$ ist ra
+				\end{enumerate}
+			
+			\end{itemize}
+	\end{enumerate}
+	
+	
+\end{document}
+

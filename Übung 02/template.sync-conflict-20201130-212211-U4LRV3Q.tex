@@ -1,0 +1,204 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{wasysym}
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 99 \\\today}
+\chead{\Large Übungsblatt 1}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	
+	\section*{Aufgabe 5}
+	Sei $x$ unser Eingabewort.
+	\subsection*{Ausgang}
+		\begin{itemize}
+		\item Eingabe $x$ liegt auf Band 1.
+		\item Kopf $k1$ für Band 1 liegt auf dem ersten Zeichen von $x$, Kopf $k2$ für Band 2 liegt über dem letzten Zeichen von $x$ (Kann man auch in $\mathcal{O} (\vert x \vert )$ einstellen).
+		\end{itemize}
+	\subsection*{Funktionsweise}
+		\begin{enumerate}[label=\arabic*.]
+		\item Lese Zeichen $(x)_i$ von $k1$ und schreibe es auf $k2$.
+		\item Schiebe $k1$ nach Rechts, $k2$ nach links.
+		\item Gehe zu $1)$, falls $k1$ nicht auf $B$ liegt.
+		\item Schiebe $k1$ wieder einmal nach Links und $k2$ solange nach Rechts, bis es auf $B$ liegt. Dann wieder einmal nach Links ($k1$ und $k2$ liegen also übereinander).
+		\item Vergleiche Zeichen unter $k1$ und $k2$. Verwerfe, wenn Zeichen ungleich. Sonst schiebe beide Köpfe nach links und wiederhole solange, bis beide auf $B$ liegen. Dann akzeptiere.
+		\end{enumerate}
+	\subsection*{Speicherbedarf}
+		Der Speicherbedarf liegt offentsichtlich hier bei $2\cdot \vert x \vert$. Einmal zur Speicherung des Eingabewortes $ ww^{-1}$ auf Band 1 und einmal um das Invertiere Eingabewort, also $x^{-1}$ auf Band 2 zu speichern.
+	\subsection*{Laufzeit}
+		Die Ausgangssituation der Köpfe kann man, wenn nicht schon eingestellt, manuell in $\mathcal{O} (\vert x \vert )$ einstellen (abhängig, wie die Köpfe eben am Anfang stehen). \\
+		Das Kopieren das Zeichens unter $k1$ auf $k2$ geht in konstanter Zeit. \\
+		Dann wird $k1$ und $k2$ insgesamt $\vert x \vert$ Mal verschoben, also liegt unser Vorgang, um $x$ invertiert auf Band 2 zu schreiben in $\mathcal{O} (\vert x \vert )$. \\
+		Unsere Überprüfung, ob das Eingabewort wirklich ein Palidrom wie in der Aufgabenstellung definiert ist geht auch in $\mathcal{O} (\vert x \vert )$, da wir das Wort nur von Rechts nach Links durchgehen.\\
+		Unsere gesamte Laufzeit liegt somit auch in $\mathcal{O} (\vert x \vert )$.
+	
+	\newpage
+	
+	\section*{Aufgabe 6}
+	\[\sqrt{2^n}=2^{\frac{n}{2}} \Rightarrow \text{Exponentiell in } \frac{n}{2}\]
+	Idee: Ich lade die Zahl $2^{\frac{n}{2}}$ und zähle dann bis $0$ herunter:
+	\begin{lstlisting}
+	// 1. Teil: Laden die Zahl 2^(n/2)
+	1: CLOAD 1
+	2: STORE 2
+	3: LOAD 1
+	4: IF c(0) = 0 THEN GOTO 11
+	5: CDIV 4
+	6: STORE 1
+	7: LOAD 2
+	8: CMUL 2
+	9: STORE 2
+	10: GOTO 3
+	// 2. Teil: Bis 0 runterzaehlen
+	11: LOAD 2
+	12: IF c(0) = 0 THEN GOTO 15
+	13: CSUB 1
+	14: GOTO 12
+	15: END
+	\end{lstlisting}
+	
+	\subsection*{Uniformes Kostenmaß}
+	Obda: $m=2^n$. Für $2^n < m < 2^{n+1}$ führt es zum selben Ergebnis wie $m=2^n$.\\
+	Nach dem $i$-ten Durchlauf der Schleife im 1. Teil ist $m=2^{n-2i}$ und $c(2) = 2^i$. \\
+	Wenn Zeile 11 erreicht wird, ist $c(2) = 2^{\frac{n}{2}}$.\\
+	Die Laufzeit von Teil 1 ist offensichtlich linear in $\Theta(n)$, da die Schleife $\frac{n}{2}$ mal durchlaufen wird.\\
+	Die Laufzeit von Teil 2 hingegen liegt in $\Theta(2^{\frac{n}{2}})$, da die Schleife auch $2^{\frac{n}{2}}$ mal durchlaufen wird.\\
+	Also liegt die Gesamtlaufzeit in $\Theta(2^{\frac{n}{2}})$.
+	
+	\subsection*{Logarithmisches Kostenmaß}
+	Die Laufzeit des 1. Teils liegt in $\Theta(\frac{n}{2} * n)$, da bei jedem der $\frac{n}{2}$ Schleifendurchläufe die Zahl zwei mal nach rechts geshiftet werden muss (lineare Laufzeit). \\
+	Die Laufzeit des 2. Teils liegt in $\Theta(2^{\frac{n}{2}} * n)$, da bei jedem der $2^{\frac{n}{2}}$ Schleifendurchläufe um die Zahl $1$ subtrahiert wird (lineare Laufzeit).
+	
+	\newpage
+	
+	\section*{Aufgabe 7}
+	\begin{enumerate}[label=\alph*)]
+	\item 	$R$ ist offensichtlich eine Teilmenge von ${R'}^*$ mit $R' \coloneqq \{a,b,c,*,+,(,),\emptyset \}$.\\
+			Zeigen wir also, dass ${R'}^*$ abzählbar ist, so muss $R$ auch abzählbar sein:\\
+			Sei $h:R'\rightarrow {0,1,2,3,4,5,6,7}$ (bijektiv) mit:
+			\begin{align*}
+			h(a) &= 0		&	h(b) &= 1		&	h(c) &= 2		&	h(*) &= 3	\\
+			h(+) &= 4		&	h(() &= 5		&	h()) &= 6		&	h(\emptyset ) &= 7
+			\end{align*}
+			Dann gibt es eine surjektive Funktion $f:{R'}^* \rightarrow \mathbb{N}$. Sei hier $r \in {R'}^*$ mit $n \coloneqq \vert r \vert$ und $r = r_1 ... r_n$ mit ${\forall}_{i\in 1...n}: r_i \in R'$: \\
+			\[f(r) = \sum_{i=0}^{n} h(r_i) \cdot 8^i\]
+			Damit ist also ${R'}^*$ abzählbar, wodurch auch $R$ abzählbar sein muss.
+			
+	\item	Beweis, dass $A$ nicht regulär ist durch Diagonalisierung:\\
+			Angenommen es gibt einen  regulären Ausdruck $r_i$, sodass $L(r_i)=A$ gilt. Dann gibt es für das Wort $a^i$ zwei Fälle:
+			\begin{enumerate}[label=\arabic*)]
+				\item $a^i$ ist in $A \Rightarrow a^i$ ist in $L(r_i) \Rightarrow a^i$ ist nicht in $A$ \lightning  Widerspruch
+			\item $a^i$ ist nicht in $A \Rightarrow a^i$ ist nicht in $L(r_i) \Rightarrow a^i$ ist in $A$ \lightning  Widerspruch
+			\end{enumerate}
+			Also ist $A$ nicht regulär.
+	
+\newpage	
+	
+	\item	Aus Fosap wissen wir, dass man einen regulären Ausdruck $r$ in einen NFA umwandeln kann und damit für ein Wort $x$ entscheiden kann, ob $x \in L(r)$ gilt. Also gibt es auch eine TM $NFA_{conv}$, welche einen für einen gegebenen regulären Ausdruck $r$ eine Gödelnummer $<R>$ berechnen kann, sodass $<R>$ unseren regulären Ausdruck als NFA simuliert. Für unseren Algorithmus benötigen wir also noch eine Universalturingmaschine $NFA_{sim}$, welche eine solche Gödelnummer mit einem Wort $<R>x$ entgegennimmt und genau dann akzeptiert, wenn $x\in L(r)$ und sonst verwirft.\\
+			Unser Algorithmus für eine TM T, welche $A_i$ entscheidet, sieht also wie folgt aus:
+			\begin{enumerate}[label=\arabic*.]
+			\item	Übergebe Eingabe $a^i$ an eine TM, welche die Anzahl an $a$'s zählt und diese dann ausgibt. Diese TM verwirft, wenn ein Fehler auftritt (z.B. anderes Zeichen als $a$), aber die gesamte TM $T$ akzeptiert dann.
+			\item	Übergebe $i$ an eine wie in der Teilaufgabe beschriebene TM, die wir $M$ nennen. $M$ berechnet uns also aus $i$ den regulären Ausdruck $r_i$.
+			\item	Den regulären Ausdruck geben wir nun weiter an $NFA_{conv}$, welche uns also die Gödelnummer $<R_i>$ einer TM zurückgibt, welche einen NFA über $r_i$ simuliert.
+			\item	Anschließend übergeben wir $NFA_{sim}$ die Gödelnummer und das Eingabewort: $<R_i>a^i$
+			\item	Im letzten Schritt invertieren wir nun das Ergebnis: Wenn also $a^i \in L(r_i)$ gilt, sollen wir verwerfen, sonst akzeptieren
+			\end{enumerate}
+	\subsection*{Korrektheit}
+	Nehmen wir an unsere Eingabe besteht nur aus der Form $a^i$, sonst würden wir eh akzeptieren, wodurch die Eingabe in A wäre.
+	\begin{align*}
+	a^i \in A	& \Rightarrow \text{Schritt 1. gibt uns } i \\
+				& \Rightarrow \text{M berechnet uns } r_i \\
+				& \Rightarrow NFA_{conv} \text{ berechnet } <R_i> \\
+				& \Rightarrow NFA_{sim} \text{ verwirft} \\
+				& \Rightarrow T \text{ akzeptiert}
+	\end{align*}
+	\begin{align*}
+	a^i \not\in A	& \Rightarrow \text{Schritt 1. gibt uns } i \\
+					& \Rightarrow \text{M berechnet uns } r_i \\
+					& \Rightarrow NFA_{conv} \text{ berechnet } <R_i> \\
+					& \Rightarrow NFA_{sim} \text{ akzeptiert} \\
+					& \Rightarrow T \text{ verwirft}
+	\end{align*}
+	Damit entscheidet also $T$ die Sprache $A$.
+	\end{enumerate}
+\end{document}
+

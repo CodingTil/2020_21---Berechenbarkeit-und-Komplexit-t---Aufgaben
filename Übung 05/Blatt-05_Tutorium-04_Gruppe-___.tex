@@ -85,12 +85,12 @@
 
 \begin{document}
 	\section*{Aufgabe 4}
-	Da $A \leq B$ gilt und $B$ rekursiv abhängig ist, ist auch $A$ rekursiv abhängig.\\
-	Damit also $A$ entscheidbar ist, muss noch $\bar{A}$ rekursiv abhängig sein.\\
-	Jedoch kann $B \leq \bar{A}$ auch gelten, wenn $\bar{A}$ nicht rekursiv abhängig ist (beispielsweise wenn $B$ nicht rekursiv ist):
+	Da $A \leq B$ gilt und $B$ rekursiv aufzählbar ist, ist auch $A$ rekursiv aufzählbar.\\
+	Damit also $A$ entscheidbar ist, muss noch $\bar{A}$ rekursiv aufzählbar sein.\\
+	Jedoch kann $B \leq \bar{A}$ auch gelten, wenn $\bar{A}$ nicht rekursiv aufzählbar ist (beispielsweise wenn $B$ nicht rekursiv ist):
 	\begin{align*}
 	B \text{ nicht rekursiv } 	&\Rightarrow \bar{A} \text{ nicht rekursiv} \\
-								&\Rightarrow \bar{A} \text{ nicht rekursiv abhängig}
+								&\Rightarrow \bar{A} \text{ nicht rekursiv aufzählbar (da A rekursiv aufzählbar)}
 	\end{align*}
 	Damit ist auch $A$ nicht immer rekursiv.
 	
@@ -114,12 +114,11 @@
 \newpage
 	
 	\section*{Aufgabe 7}
-	rekursiv abhängig = ra, rekursiv = r
+	rekursiv aufzählbar = ra, rekursiv = r
 	\begin{enumerate}[label=\alph*)]
 	\item	\begin{itemize}
 			\item[$"\Rightarrow"$]
 				$L$ ra $\Rightarrow$ Es gibt eine TM $M$, die für alle $x\in L$ hält und akzeptiert.\\
-				Angenommen $M$ hält auch für $w\not\in L$ (sonst überspringe diesen Teil), und verwirft diese $w$.\\
 				$\Rightarrow$ Konstruiere TM $M'$, die $M$ simuliert:
 					\begin{itemize}
 					\item $M$ akzeptiert $\Rightarrow$ $M'$ akzeptiert
@@ -146,22 +145,22 @@
 			\item[$"\Rightarrow"$]
 				$L$ rekursiv aufzählbar:
 				\begin{enumerate}[label=\arabic*)]
-				\item	Falls  $L = \emptyset$ $\Rightarrow$ $L$ r $\Rightarrow$ $L$ ra\\
+				\item	Falls  $L = \emptyset$ gilt (immer ra)
 				\item	Falls $L \neq \emptyset$:\\
 						Es gibt ja $h: \Sigma^* \rightarrow \mathbb{N}$.\\
 						Zudem hat die ra Sprache $L$ einen Aufzähler $A$, der Wörter $w \in L$ aufzählt.\\
 						$\Rightarrow$ Es gibt $g: \mathbb{N} \rightarrow L$, die eine Zuordnung von Zahlen zu den Wörter auf dem Ausgabeband von $A$ ist
-						$\Rightarrow$ $f:g(h)$ ist somit eine totale Funktion von $\Sigma^*$ nach $L$
+						$\Rightarrow$ $f \coloneqq g \circ h$ ist somit eine totale Funktion von $\Sigma^*$ nach $L$
 				\end{enumerate}
 			
-			\item[$"\Rightarrow"$]
+			\item[$"\Leftarrow"$]
 				\begin{enumerate}[label=\arabic*)]
-				\item	$L=\emptyset$ $\Rightarrow$ $L$ r $\Rightarrow$ $L$ ra
-				\item	$f: \Sigma^* \rightarrow L$ solche totale Funktion
-						$\Rightarrow$ Sei $T$ eine TM, die $f$ berechnet für $w \in \Sigma^*$
-						$\Rightarrow$ Sei $Z$ ein Aufzähler von $\Sigma^*$
-						$\Rightarrow$ Sei $T'$ eine TM, die $T$ und $Z$ benutzt, keine Eingaben nimmt, jedes von $Z$ geschriebene Wort in $T$ füttert.
-						$\Rightarrow$ $T'$ ist ein Aufzähler von $L$
+				\item	$L=\emptyset$ $\Rightarrow$ $L$ r $\Rightarrow$ $L$ ra (offensichtlich)
+				\item	$f: \Sigma^* \rightarrow L$ solche totale Funktion\\
+						$\Rightarrow$ Sei $T$ eine TM, die $f$ berechnet für $w \in \Sigma^*$\\
+						$\Rightarrow$ Sei $Z$ ein Aufzähler von $\Sigma^*$\\
+						$\Rightarrow$ Sei $T'$ eine TM, die $T$ und $Z$ benutzt, keine Eingaben nimmt, jedes von $Z$ geschriebene Wort in $T$ füttert.\\
+						$\Rightarrow$ $T'$ ist ein Aufzähler von $L$\\
 						$\Rightarrow$ $L$ ist ra
 				\end{enumerate}
 			

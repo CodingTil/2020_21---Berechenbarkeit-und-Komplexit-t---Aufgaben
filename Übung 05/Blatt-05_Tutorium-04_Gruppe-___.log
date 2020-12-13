@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  11 DEC 2020 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  13 DEC 2020 18:24
 entering extended mode
 **./Blatt-05_Tutorium-04_Gruppe-___.tex
 (Blatt-05_Tutorium-04_Gruppe-___.tex
@@ -1110,31 +1110,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1{C:/Users/Til Mohr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
-
- []
-
-[2]
+] [2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     172.
+(LaTeX3)     171.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     172.
+(LaTeX3)     171.
 
- (Blatt-05_Tutorium-04_Gruppe-___.aux)
+
+(Blatt-05_Tutorium-04_Gruppe-___.aux)
 Package rerunfilecheck Info: File `Blatt-05_Tutorium-04_Gruppe-___.out' has not
  changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25366 strings out of 479799
- 511757 string characters out of 2877687
+ 25368 strings out of 479799
+ 511775 string characters out of 2877687
  1008759 words of memory out of 3000000
  41883 multiletter control sequences out of 15000+200000
- 542778 words of font info for 65 fonts, out of 3000000 for 9000
+ 542829 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,20n,111p,10721b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
@@ -1147,7 +1143,7 @@ amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Blatt-05_Tutorium-04_Gruppe-___.pdf (2 pages, 108883 bytes).
+Output written on Blatt-05_Tutorium-04_Gruppe-___.pdf (2 pages, 109213 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)

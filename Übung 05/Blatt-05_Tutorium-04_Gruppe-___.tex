@@ -96,7 +96,26 @@
 	
 		
 	\section*{Aufgabe 5}
-	
+	Zu zeigen: für eine berechenbare Funktion $f$ gilt:\\
+	$x \in H_{\epsilon} \Leftrightarrow f(x) \in L_{111}$ und $x \not \in H_{\epsilon} \Leftrightarrow f(x) \not \in L_{111}$\\
+	Sei f:\\
+	$f(x) = \langle M' \rangle$ falls $x$ Gödelnummer $\langle M \rangle$ wobei $M'$ die TM ist die zunächst das ganze Band löscht und dann $M$ ausführt.\\
+	$f(x) = \langle M'' \rangle$ falls $x$ keine Gödelnummer ist, wobei $M''$ eine TM ist die nur einen Endlosschleife hat und somit nie terminiert.\\
+	$f$ ist offensichtlich berechenbar, da das Bestimmen ob ein Eingabewort eine TM ist, das Löschen des Bandes und das Simulieren einer TM alles berechenbar ist.\\
+
+	$x \in H_{\epsilon}$\\
+			   $\Leftrightarrow x$ ist Gödelnummer $\langle M \rangle$ und $\langle M \rangle$ hält auf $\epsilon$\\
+			   $\Leftrightarrow \langle M' \rangle$ hält auf jeder Eingabe somit auch die, die auf 111 enden.\\
+			   $\Leftrightarrow \langle M' \rangle \in L_{111}$\\
+			   $\Leftrightarrow f(x) \in L_{111}$\\
+
+	$x \not \in H_{\epsilon}$\\
+				 $\Leftrightarrow x$ ist keine Gödelnummer oder $x$ ist Gödelnummer $\langle M \rangle$ und $\langle M \rangle$ hält nicht auf $\epsilon$\\
+				 $\Leftrightarrow f(x) = \langle M'' \rangle$ oder $f(x) = \langle M' \rangle$ wobei $M'$ auf keiner Eingabe terminiert, somit auch die, die auf 111 enden.\\
+				 $\Leftrightarrow f(x)$ terminiert nie.\\
+				 $\Leftrightarrow f(x) \not \in L_{111}$\\
+
+	Somit gilt: $H_{\epsilon} \leq L_{111}$
 	
 	\section*{Aufgabe 6}
 	\begin{enumerate}[label=\alph*)]
@@ -107,11 +126,43 @@
 			\end{align*}
 			$S \neq R$, da in $S$ nicht die Funktion enthalten ist, die für alle Eingaben $0$ ausgibt.\\
 			$S \neq \emptyset$, da es Algorithmen gibt um zu bestimmen, ob eine bestimmte Zahl $x$ eine Primzahl ist.\\
+			Ausserdem macht die Sprache ausschliesslich eine Aussage über die Ausgabe der TM.\\
 			Nach dem Satz von Rice ist also $L_{\mathbb{P}} = L(S)$ nicht rekursiv.
-	\item	
-	\end{enumerate}
-	
 \newpage
+	\item	Sei $L_1$ das Entscheidungsproblem: Gegeben eine TM $M$, akzeptiert diese jede Eingabe $w$? Also:
+			\begin{center}
+			$L_1 = \{\langle M \rangle \vert L(M) = \Sigma^*\}$\\
+			\end{center}
+			Mit dem Satz von Rice ist schnell bewiesen, dass dieses Entscheidungsproblem unentscheidbar ist:\\
+			$S \neq R$, da in $S$ nicht die Funktion enthalten ist, die für alle Eingaben $0$ ausgibt.\\
+			$S \neq \emptyset$, da in $S$ die Funktion enthalten ist, die fül alle Eingabe $1$ ausgibt.\\
+			Da die Sprache ausschliesslich eine Aussage über die Ausgabe der TM macht, $S \neq R$ und $S \neq \emptyset$ gilt, besagt der Satz von Rice dass $L_1$ nicht entscheidbar ist.\\
+
+			Nun zeigen wir, dass wenn es eine TM $M_{comp}$ gäbe die die gegebene Sprache $L_{comp}$ entscheidet man dann durch Unterprogrammtechnik auch $L_1$ mit der TM $M_1$ entscheiden könnte.
+			Da wir gerade gezeigt haben, dass $L_1$ nicht entscheidbar ist kann $L_{comp}$ also ebenfalls nicht entscheidbar sein.
+			
+			Dafür definieren wir die TM $M_0$ welche jedes Wort verwirft.\\
+			Die TM $M_1$ gibt einfach $\langle M_0 \rangle$ und das Eingabewort in die TM $M_{comp}$ ein und übernimmt dann die Ausgabe.\\
+			
+			Korrektheit:\\
+			\\
+			$\overline{L(M_0)} = \{\langle M \rangle \vert L(M) = \Sigma^*\} = L_1$\\
+			\\
+			$x \in L_1$\\
+			$\Leftrightarrow x$ ist Gödelnummer $\langle M \rangle$ und $L(M) = L_1$\\
+			$\Leftrightarrow M_{comp}$ akzeptiert mit Eingaben $\langle M \rangle$ und $\langle M_0 \rangle$\\
+			$\Leftrightarrow M_1$ akzeptiert ebenfalls.\\
+			$\Leftrightarrow x \in L(M_1)$\\
+			\\
+			$x \not\in L_1$\\
+			$\Leftrightarrow x$ ist keine Gödelnummer oder $x$ ist Gödelnummer $\langle M \rangle$ und $L(M) \neq L_1$\\
+			$\Leftrightarrow M_{comp}$ verwirft die Eingaben $\langle M \rangle$ und $\langle M_0 \rangle$\\
+			$\Leftrightarrow M_1$ verwirft ebenfalls.\\
+			$\Leftrightarrow x \not\in L(M_1)$\\
+			
+	\end{enumerate}
+		
+	\newpage
 	
 	\section*{Aufgabe 7}
 	rekursiv aufzählbar = ra, rekursiv = r

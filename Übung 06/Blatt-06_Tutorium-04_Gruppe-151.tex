@@ -1,0 +1,132 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
+\chead{\Large Übungsblatt 04}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	\section*{Aufgabe 4}
+	\begin{enumerate}[label=\arabic*)]
+	\item	$\left[ \frac{ab}{abb} \right] \left[ \frac{bb}{b} \right]$ ist eine mögliche Lösung dieser PKP-Instanz.
+	
+	\item	\begin{itemize}
+			\item $\left[ \frac{a}{ba} \right], \left[ \frac{a}{bb} \right], \left[ \frac{aab}{ab} \right], \left[ \frac{abab}{aa} \right]$ sind keine möglichen Startdominos, da sie mit unterschiedlichen Buchstaben beginnen.
+			\item $\left[ \frac{ab}{abb} \right], \left[ \frac{aa}{aab} \right]$ erzeugen zwar selber gleich beginnende Worte oben und unten, jedoch endet bei beiden jedes Wort unten mit einem $b$ mehr als oben. Zudem gibt es keinen Dominostein, der oben mit einem $b$ beginnt. Daher sind diese auch keine möglichen Startdominos.
+			\end{itemize}
+			Da es keine möglichen Startdominos gibt, hat diese PKP-Instanz keine Lösung.	
+	\end{enumerate}
+		
+	\section*{Aufgabe 5}
+	Um die Aussage zu beweisen, zeigen wir erst, dass $L_{01}$ rekursiv ist:\\
+	Sei $T$ eine TM mit folgender Funktionsweise:
+	\begin{enumerate}
+	\item Gehe an den Anfang des Eingabewortes.
+	\item Ist der Buchstabe unter dem Kopf eine $1$, so verwirf die Eingabe. Ist der Buchstabe unter dem Kopf ein $B$, so verwirf die Eingabe (Eingabe war $\epsilon$). Ist der Buchstabe unter dem Kopf eine $0$, so lösche das Zeichen, und gehe zu dem Ende des Eingabewortes.
+	\item Ist der Buchstabe unter dem Kopf eine $0$, so verwirf die Eingabe. Ist der Buchstabe unter dem Kopf eine $1$, so lösche das Zeichen und gehe einen Schritt nach Links.
+	\item Ist das Zeichen unter dem Kopf $B$, akzeptiere die Eingabe. Sonst fahre bei Schritt \textit{(i)} fort.
+	\end{enumerate}
+	Korrektheit:
+	\begin{itemize}
+	\item Sei $\epsilon$ das Eingabewort, $\epsilon \not\in L_{01}$ $\Rightarrow$ $T$ verwirft die Eingabe sofort.
+	\item Sei $w$ das Eingabewort, $w \not\in L_{01}$ $\Rightarrow$ Durch das gleichmäßige Abbauen des Eingabewortes an beiden Seiten erkennt $T$ in Schritten \textit{(ii)} bzw. \textit{(iii)} irgendwann, dass die Eingabe nicht dem Format $0^n1^n, n>0$ entspricht $\Rightarrow$ $T$ verwirft
+	\item Sei $w$ das Eingabewort, $w \in L_{01}$ $\Rightarrow$ Duch das gleichmäßige Abbauen des Eingabewortes an beiden Seiten wird $T$ keine Fehler des Formates $0^n1^n, n>0$ an $w$ entdecken $\Rightarrow$ $T$ akzeptiert
+	\end{itemize}
+	$T$ erkennt offensichtlich $L_{01}$, daher ist $L_{01}$ rekursiv.	
+	
+	Sei nun $L$ eine Sprache.
+	\begin{itemize}
+	\item[$\Rightarrow$] Sei $L$ rekursiv. Dann gilt auch $L \leq L_{01}$, da ja auch $L_{01}$ rekursiv ist. (VL)
+	\item[$\Leftarrow$] Gelte $L \leq L_{01}$. Da ja $L_{01}$ rekursiv ist, muss auch $L$ rekursiv sein. (VL)
+	\end{itemize}
+	Damit gilt die Aussage.
+	
+\newpage
+	\section*{Aufgabe 6}
+	\begin{enumerate}[label=\alph*)]
+	\item	
+			
+	\item	
+			
+	\end{enumerate}
+	
+\end{document}
+

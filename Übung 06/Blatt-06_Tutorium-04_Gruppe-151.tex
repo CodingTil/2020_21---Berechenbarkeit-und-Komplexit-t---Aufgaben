@@ -120,7 +120,7 @@
 	
 	Sei nun $L$ eine Sprache.
 	\begin{itemize}
-	\item[$\Rightarrow$] Sei $L$ rekursiv. Dann gilt auch $L \leq L_{01}$, da ja auch $L_{01}$ rekursiv ist. (VL)
+	\item[$\Rightarrow$] Sei $L$ rekursiv. Dann gibt es eine berechenbare Funktion $f$ die $L$ entscheidet. Diese Funktion $f$ ändern wir nun so zu $f'$ ab, dass sie $01$ ausgibt falls $f$ ja ausgibt und $11$ falls $f$ nein ausgibt. Somit gilt nun, dass wenn $x \in L$ dann auch $f'(x) \in L_{01}$ liegt und wenn $x \not \in L$ dann auch $f'(x) \not \in L_{01}$ liegt. Also gilt $L \leq L_{01}$.
 	\item[$\Leftarrow$] Gelte $L \leq L_{01}$. Da ja $L_{01}$ rekursiv ist, muss auch $L$ rekursiv sein. (VL)
 	\end{itemize}
 	Damit gilt die Aussage.
@@ -128,7 +128,38 @@
 \newpage
 	\section*{Aufgabe 6}
 	\begin{enumerate}[label=\alph*)]
-	\item	
+	\item	Ansatz: Seien $A$ und $B$ zwei Tupel $\mathbb{Z}^k$ wobei $k$ die Anzahl der Dominosteine ist. Gegeben das $i$-te Dominostein $\left[ \frac{w_1}{w_2}\right]$ dann ist $A_i = |w_1|_a - |w_2|_a$ und $B_i = |w_1|_b - |w_2|_b$.\\
+			Beispiel: $\{\left[\frac{abbb}{bbaa}\right], \left[\frac{baa}{a}\right], \left[\frac{a}{ab}\right]\} \Rightarrow A = (-1, 1, 0); B = (1, 1, -1)$\\
+
+			Nun gilt es eine Lösung $p$ für das folgende Gleichungssystem zu finden. $p$ ist wiederum ein Tupel der Form $\mathbb{N}^k$.\\
+			$\sum_{1 \leq j \leq k}(p_j * A_j) = 0$\\
+			$\sum_{1 \leq j \leq k}(p_j * B_j) = 0$\\
+			Für unser Beispiel wäre z.B. $p = (1, 1, 2)$ eine Lösung.\\
+
+			Sei nun $q$ ebenfalls ein Tupel der Form $\mathbb{N}^k$:\\
+			$q_1 \coloneqq p_1$\\
+			$q_n \coloneqq q_{n-1} + p_n$\\
+
+			Sei nun so eine Lösung gegeben, dann ist die Folge $I$ der Länge $q_k$ folgendermassen definiert:\\
+			$I_1 ... I_{q_1} \coloneqq 1$\\
+			$I_{q_1} ... I_{q_2} \coloneqq 2$\\
+			$...$\\
+			$I_{q_{k-1}} ... I_{q_k} \coloneqq k$\\
+
+			Da lineare Gleichungssysteme algorithmisch lösbar sind und jeder der beschriebenen Schritte ebenfalls berechenbar ist, ist das Problem entscheidbar.\\
+
+			Korrektheit:\\
+			\begin{itemize}
+			\item $p$ eine Lösung des GS $\Rightarrow I$ ist Folge sodass Variante des PKP gelöst ist.\\
+				Sei nun dieses $q$ gegeben. Dann berechne wie oben definiert $I$.\\
+				$\sum_{1 \leq j \leq k}(p_j * A_j) = 0$ und $\sum_{1 \leq j \leq k}(p_j * B_j) = 0$\\
+				$ \Rightarrow \sum_{1 \leq j \leq q_k}(|x_{I_j}|_a) = \sum_{1 \leq j \leq q_k}(|y_{I_j}|_a)$ und $\sum_{1 \leq j \leq q_k}(|x_{I_j}|_b) = \sum_{1 \leq j \leq q_k}(|y_{I_j}|_b)$\\
+			\item GS hat keine Lösung $\Rightarrow$ es gibt keine Folge $I$ sodass Variate des PKP gelöst ist.\\
+				Kontraposition: $I$ ist Folge sodass Variante des PKP gelöst ist $\Rightarrow p$ eine Lösung des GS\\
+					Sei nun das $I$ gegeben. Dann ist $p_j$ die Anzahl an Vorkommen von $j$ in $I$.\\
+					Dann ist $p$ eine Lösung des GS: $\sum_{1 \leq j \leq k}(p_j * A_j) = 0$ und $\sum_{1 \leq j \leq k}(p_j * B_j) = 0$, denn es gilt:\\
+					$\sum{1 \leq j \leq q_k}(|x_{I_j}|_a) = \sum{1 \leq j \leq q_k}(|y_{I_j}|_a)$ und $\sum{1 \leq j \leq q_k}(|x_{I_j}|_b) = \sum{1 \leq j \leq q_k}(|y_{I_j}|_b)$\\
+			\end{itemize}
 			
 	\item	Dieses Problem ist gleich dem PKP.\\
 			Sei $K$ eine PKP-Instanz, wobei hier $k_i$ der $i$-ten Stein aus $K$ ist.\\

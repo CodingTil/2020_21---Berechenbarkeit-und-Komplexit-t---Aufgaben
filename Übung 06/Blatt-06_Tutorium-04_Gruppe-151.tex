@@ -74,6 +74,12 @@
 
 \usepackage{enumitem}
 
+\usepackage{listings}  
+\lstset{columns=fullflexible,
+        mathescape=true,
+        morekeywords={if,else,return,while,Input}
+        }
+
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
 \ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
 \chead{\Large Übungsblatt 04}
@@ -124,8 +130,31 @@
 	\begin{enumerate}[label=\alph*)]
 	\item	
 			
-	\item	
-			
+	\item	Dieses Problem ist gleich dem PKP.\\
+			Sei $K$ eine PKP-Instanz, wobei hier $k_i$ der $i$-ten Stein aus $K$ ist.\\
+			Aus $K$ können wir nun eine Instanz $K'$ unserer PKP-Variante konstruieren. Dazu wende folgendes Verfahren an:
+			\begin{itemize}
+			\item Hat der $k_i$ Stein oben und unten verschieden lange Wörter, so übernehme diesen auch in $K'$.
+			\item Hat der $k_i$ Stein gleich lange Wörter oben und unten, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_n} \right]$ mit $a_j, b_j \in \Sigma$ für $0<j\leq n$.\\
+				  Nehme für den Stein $k_i$ einen Buchstaben $\#_i \not\in\Sigma$ und baue aus $k_i$ 2 neue Steine und füge diese dann $K'$ hinzu:\\
+				  $x_i\coloneqq \left[ \frac{\#_ia_1...a_n}{\#_i} \right], y_i\coloneqq \left[ \frac{\#_i}{b_1...b_n\#_i} \right]$\\
+				  Damit muss immer auf ein $x_i$ ein $y_i$ folgen
+			\end{itemize}
+			Gibt es also eine Folge $\langle o_1,...,o_m \rangle$, sodass $k_{o_1} ... k_{o_m}$ eine Lösung von $K$ ist, dann gibt es eine Folge $\langle o'_1,...,o'_p \rangle , p \geq m$, sodass $k'_{o_1} ... k'_{o_m}$ eine Lösung von $K'$ ist:
+			\begin{lstlisting}
+			Input: $\langle o_1,...,o_m \rangle$
+			i = 1
+			I = $\langle \rangle$
+			while(i < m)
+				if($k_i$ oben und unten verschieden lang)
+					I += index($k_i$)
+				else
+					I += index($x_i$)
+					I += index($y_i$)
+				i++
+			return I
+			\end{lstlisting}
+			Also ist diese Problem auch nicht entscheidbar.
 	\end{enumerate}
 	
 \end{document}

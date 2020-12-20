@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  20 DEC 2020 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  20 DEC 2020 23:14
 entering extended mode
 **./Blatt-06_Tutorium-04_Gruppe-151.tex
 (Blatt-06_Tutorium-04_Gruppe-151.tex
@@ -1136,14 +1136,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1{C:/Users/Til Mohr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-] [2]
+]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     160.
+(LaTeX3)     165.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     160.
+(LaTeX3)     165.
 
 
 (Blatt-06_Tutorium-04_Gruppe-151.aux)
@@ -1152,11 +1157,11 @@ Package rerunfilecheck Info: File `Blatt-06_Tutorium-04_Gruppe-151.out' has not
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27003 strings out of 479799
- 533204 string characters out of 2877687
- 1032504 words of memory out of 3000000
- 43485 multiletter control sequences out of 15000+200000
- 543891 words of font info for 72 fonts, out of 3000000 for 9000
+ 27011 strings out of 479799
+ 533306 string characters out of 2877687
+ 1034504 words of memory out of 3000000
+ 43489 multiletter control sequences out of 15000+200000
+ 544110 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,20n,111p,10721b,1231s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Til Mohr\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
@@ -1172,10 +1177,11 @@ c/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Blatt-06_Tutorium-04_Gruppe-151.pdf (2 pages, 156412 bytes).
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Blatt-06_Tutorium-04_Gruppe-151.pdf (2 pages, 167601 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
+ 111 PDF objects out of 1000 (max. 8388607)
  26 named destinations out of 1000 (max. 500000)
- 13837 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 14349 words of extra memory for PDF output out of 14400 (max. 10000000)
 

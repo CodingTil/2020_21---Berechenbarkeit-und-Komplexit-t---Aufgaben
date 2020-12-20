@@ -132,13 +132,17 @@
 			
 	\item	Dieses Problem ist gleich dem PKP.\\
 			Sei $K$ eine PKP-Instanz, wobei hier $k_i$ der $i$-ten Stein aus $K$ ist.\\
-			Aus $K$ können wir nun eine Instanz $K'$ unserer PKP-Variante konstruieren. Dazu wende folgendes Verfahren an:
+			Aus $K$ können wir nun eine Instanz $K'$ unserer PKP-Variante konstruieren. Dazu wende folgendes Verfahren an:\\
+			Sei $\# \not\in \Sigma$.
 			\begin{itemize}
-			\item Hat der $k_i$ Stein oben und unten verschieden lange Wörter, so übernehme diesen auch in $K'$.
+			\item Füge den Universalstein $u \coloneqq \left[ \frac{\#\#}{\#} \right]$ zu $K'$ hinzu.
+			\item Hat der $k_i$ Stein oben und unten verschieden lange Wörter, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_m} \right]$ mit $a_j, b_l \in \Sigma$ für $0<j\leq n, 0<l\leq m, n \neq m$.\\
+			      So füge $K'$ folgenden Stein hinzu:\\
+			      $x_i \coloneqq \left[ \frac{a_1\#\#a_2\#\#...a_n\#\#}{b_1\#\#b_2...b_m\#\#} \right]$
 			\item Hat der $k_i$ Stein gleich lange Wörter oben und unten, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_n} \right]$ mit $a_j, b_j \in \Sigma$ für $0<j\leq n$.\\
-				  Nehme für den Stein $k_i$ einen Buchstaben $\#_i \not\in\Sigma$ und baue aus $k_i$ 2 neue Steine und füge diese dann $K'$ hinzu:\\
-				  $x_i\coloneqq \left[ \frac{\#_ia_1...a_n}{\#_i} \right], y_i\coloneqq \left[ \frac{\#_i}{b_1...b_n\#_i} \right]$\\
-				  Damit muss immer auf ein $x_i$ ein $y_i$ folgen
+				  Füge dann einen Stein der folgender Form $K'$ hinzu:\\
+				  $y_i \coloneqq \left[ \frac{a_1\#\#a_2\#\#...a_n}{b_1\#\#b_2\#\#...b_n\#} \right]$\\
+				  Damit muss immer auf ein $y_i$ ein $u$ folgen
 			\end{itemize}
 			Gibt es also eine Folge $\langle o_1,...,o_m \rangle$, sodass $k_{o_1} ... k_{o_m}$ eine Lösung von $K$ ist, dann gibt es eine Folge $\langle o'_1,...,o'_p \rangle , p \geq m$, sodass $k'_{o_1} ... k'_{o_m}$ eine Lösung von $K'$ ist:
 			\begin{lstlisting}
@@ -147,14 +151,15 @@
 			I = $\langle \rangle$
 			while(i $\leq$ m)
 				if($k_{o_i}$ oben und unten verschieden lang)
-					I += index($k_{o_i}$)
-				else
 					I += index($x_{o_i}$)
+				else
 					I += index($y_{o_i}$)
+					I += index($u$)
 				i++
 			return I
 			\end{lstlisting}
-			Also ist diese Problem auch nicht entscheidbar.
+			, wobei hier \verb|index(k)| den Index von Dominostein \verb|k| aus $K'$ zurückgibt.\\
+			Also können wir dieses Problem auf das PKP ableiten. Da das PKP nicht berechenbar ist, ist dieses Problem auch nicht berechenbar.
 	\end{enumerate}
 	
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  20 DEC 2020 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.21)  20 DEC 2020 16:50
 entering extended mode
 **./Blatt-06_Tutorium-04_Gruppe-151.tex
 (Blatt-06_Tutorium-04_Gruppe-151.tex
@@ -1136,16 +1136,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1{C:/Users/Til Mohr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-48.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\omlcmr.fd"
-File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 148.
- [2]
+] [2]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
 (LaTeX3)     160.
@@ -1161,13 +1152,13 @@ Package rerunfilecheck Info: File `Blatt-06_Tutorium-04_Gruppe-151.out' has not
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27021 strings out of 479799
- 533512 string characters out of 2877687
+ 27003 strings out of 479799
+ 533204 string characters out of 2877687
  1032504 words of memory out of 3000000
- 43500 multiletter control sequences out of 15000+200000
+ 43485 multiletter control sequences out of 15000+200000
  543891 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,20n,111p,10721b,1412s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 108i,20n,111p,10721b,1231s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Til Mohr\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><

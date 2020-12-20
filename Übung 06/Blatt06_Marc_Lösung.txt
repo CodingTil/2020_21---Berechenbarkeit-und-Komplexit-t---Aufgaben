@@ -1,0 +1,53 @@
+Aufgabe 4)
+K1:
+b abb aa
+ba b baa
+
+bb aa
+b baa
+
+K2:
+Fall 1: Fängt mit ab / abb an. Geht nicht weil kein Domino oben mit b anfängt.
+Fall 2: Fängt mit aa / aab an. Geht nicht weil kein Domino oben mit b anfängt.
+
+Aufgabe 5)
+L entscheidbar => L ist nicht schwerer als L_01:
+Wenn L entscheidbar ist gibt es eine berechenbare Funktion f die L entscheidet. Diese Funktion f ändern wir nun so zu f' ab, dass sie 01 ausgibt falls f ja ausgibt und 11 falls f nein ausgibt. Somit gilt nun, dass wenn x in L liegt f'(x) auch in L_01 liegt und wenn x nicht in L liegt f'(x) auch  nicht in L_01 liegt. ################
+
+L ist nicht schwerer als L_01 => L entscheidbar:
+L_01 ist entscheidbar. Dies ist recht einfach zu sehen, da eine TM lediglich vom anfang zum ende der Eingabe gehen müsste um zu prüfen ob das Band mit 0 beginnt und mit 1 aufhört und dann diese beiden Zahlen entfernt. Diese Vorgehensweise wird wiederholt bis das Band leer ist.
+Da L auf L_01 reduzierbar ist, ist L somit auch entscheidbar.
+
+Aufgabe 6)
+a) Ansatz: Seien A und B zwei Tupel der Länge k Z^k wobei n die Anzahl der Dominosteine ist. Gegeben das i-te Dominostein [w_1 | w_2] dann ist A_i = |w_1|_a - |w_2|_a und B_i = |w_1|_b - |w_2|_b.
+Beispiel: {[abbb | bbaa], [baa | a], [a | ab]} => A = (-1, 1, 0); B = (1, 1, -1)
+
+Nun gilt es eine Lösung x für das folgende Gleichungssystem zu finden. p ist wiederum ein Tupel der Länge k: N^k
+\sum_{1 <= j <= k}(p_j * A_j) = 0
+\sum_{1 <= j <= k}(p_j * B_j) = 0
+Für unser Beispiel wäre z.B. p = (1, 1, 2) eine Lösung.
+
+Sei nun q:
+q_1 = p_1
+q_n = q_n-1 + p_n
+
+Sei nun so eine Lösung gegeben, dann ist die Folge I der Länge q_k folgendermassen definiert:
+I_1 ... I_q_1 = 1
+I_q_1 ... I_q_2 = 2
+...
+I_q_(k-1) ... I_q_k = k
+
+Da lineare Gleichungssysteme algorithmisch lösbar sind und jeder der beschriebenen Schritte ebenfalls berechenbar ist, ist das Problem entscheidbar.
+
+Korrektheit:
+p eine Lösung des GS => I ist Folge sodass Variante des PKP gelöst ist.
+	Sei nun dieses q gegeben. Dann berechne wie oben definiert I.
+	\sum_{1 <= j <= k}(p_j * A_j) = 0 und \sum_{1 <= j <= k}(p_j * B_j) = 0
+	=> \sum{1 <= j <= q_k}(|x_I_j|_a) = \sum{1 <= j <= q_k}(|y_I_j|_a) und \sum{1 <= j <= q_k}(|x_I_j|_b) = \sum{1 <= j <= q_k}(|y_I_j|_b)
+GS hat keine Lösung => es gibt keine Folge I sodass Variate des PKP gelöst ist.
+	Kontraposition: I ist Folge sodass Variante des PKP gelöst ist => p eine Lösung des GS
+		Sei nun das I gegeben. Dann ist p_j die Anzahl an Vorkommen von j in I.
+		Dann ist p eine Lösung des GS: \sum_{1 <= j <= k}(p_j * A_j) = 0 und \sum_{1 <= j <= k}(p_j * B_j) = 0, denn es gilt:
+		\sum{1 <= j <= q_k}(|x_I_j|_a) = \sum{1 <= j <= q_k}(|y_I_j|_a) und \sum{1 <= j <= q_k}(|x_I_j|_b) = \sum{1 <= j <= q_k}(|y_I_j|_b)
+
+b) Index definieren. Korrektheit explizit beweisen ##########

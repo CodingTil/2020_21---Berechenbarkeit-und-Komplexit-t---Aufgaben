@@ -82,7 +82,7 @@
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
 \ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
-\chead{\Large Übungsblatt 04}
+\chead{\Large Übungsblatt 06}
 \ohead{Til Mohr, 405959 \\
 	   Andrés Montoya, 405409 \\
 	   Marc Ludevid Wulf, 405401}
@@ -136,15 +136,15 @@
 			Sei $\# \not\in \Sigma$.
 			\begin{itemize}
 			\item Füge den Universalstein $u \coloneqq \left[ \frac{\#\#}{\#} \right]$ zu $K'$ hinzu.
-			\item Hat der $k_i$ Stein oben und unten verschieden lange Wörter, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_m} \right]$ mit $a_j, b_l \in \Sigma$ für $0<j\leq n, 0<l\leq m, n \neq m$.\\
+			\item Hat der $k_i$ Stein oben und unten verschieden lange Wörter, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_q} \right]$ mit $a_j, b_l \in \Sigma$ für $0<j\leq n, 0<l\leq q, n \neq q$.\\
 			      So füge $K'$ folgenden Stein hinzu:\\
-			      $x_i \coloneqq \left[ \frac{a_1\#\#a_2\#\#...a_n\#\#}{b_1\#\#b_2...b_m\#\#} \right]$
+			      $x_i \coloneqq \left[ \frac{a_1\#\#a_2\#\#...a_n\#\#}{b_1\#\#b_2...b_q\#\#} \right]$
 			\item Hat der $k_i$ Stein gleich lange Wörter oben und unten, dann ist der Stein der Form $\left[ \frac{a_1...a_n}{b_1...b_n} \right]$ mit $a_j, b_j \in \Sigma$ für $0<j\leq n$.\\
 				  Füge dann einen Stein der folgender Form $K'$ hinzu:\\
 				  $y_i \coloneqq \left[ \frac{a_1\#\#a_2\#\#...a_n}{b_1\#\#b_2\#\#...b_n\#} \right]$\\
 				  Damit muss immer auf ein $y_i$ ein $u$ folgen
 			\end{itemize}
-			Gibt es also eine Folge $\langle o_1,...,o_m \rangle$, sodass $k_{o_1} ... k_{o_m}$ eine Lösung von $K$ ist, dann gibt es eine Folge $\langle o'_1,...,o'_p \rangle , p \geq m$, sodass $k'_{o_1} ... k'_{o_m}$ eine Lösung von $K'$ ist:
+			Gibt es also eine Folge $\langle o_1,...,o_m \rangle$, sodass $k_{o_1} ... k_{o_m}$ eine Lösung von $K$ ist, dann gibt es eine Folge $\langle o'_1,...,o'_p \rangle , p \geq m$, sodass $k'_{o_1} ... k'_{o_p}$ eine Lösung von $K'$ ist:
 			\begin{lstlisting}
 			Input: $\langle o_1,...,o_m \rangle$
 			i = 1
@@ -159,7 +159,7 @@
 			return I
 			\end{lstlisting}
 			, wobei hier \verb|index(k)| den Index von Dominostein \verb|k| aus $K'$ zurückgibt.\\
-			Also können wir dieses Problem auf das PKP ableiten. Da das PKP nicht berechenbar ist, ist dieses Problem auch nicht berechenbar.
+			Also können wir das PKP auf dieses Problem ableiten. Da das PKP nicht berechenbar ist, ist dieses Problem auch nicht berechenbar.
 	\end{enumerate}
 	
 \end{document}

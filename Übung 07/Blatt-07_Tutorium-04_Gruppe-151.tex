@@ -1,0 +1,177 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+\usepackage{enumitem}
+
+\usepackage{listings}  
+\lstset{columns=fullflexible,
+        mathescape=true,
+        morekeywords={if,else,return,while,Input}
+        }
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
+\chead{\Large Übungsblatt 07}
+\ohead{Til Mohr, 405959 \\
+	   Andrés Montoya, 405409 \\
+	   Marc Ludevid Wulf, 405401}
+	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	\section*{Aufgabe 4}
+	\begin{lstlisting}
+	x_3 := x_4 + 0;				// Set x_3 to 0
+	x_0 := x_4 + 1;				// Set x_0 to 1
+	// Note 1
+	LOOP x_2 DO
+		x_3 := x_4 + 0; 		// Set x_3 to 0
+		// Note 2	
+		LOOP x_1 DO
+			LOOP x_0 DO
+				x_3 := x_3 + 1;
+			END
+		END
+		x_0 := x_3 + 0;
+	END
+	\end{lstlisting}
+	Unser Programm berechnet für $x_1^{x_2}$ $x_2$-mal $1 \cdot x_1 \cdot ... \cdot x_1$.\\
+	Hierzu müssen wir also $x_2$ mal eine Multiplikation $x_0 \coloneqq x_0 \cdot x_1$ durchführen (\verb|Note 1|). Dazu initialisieren wir $x_0$ auf $1$.\\
+	Die Multiplikation selber müssen wir nochmal in 2 Schleifen aufteilen (\verb|Note 2|): Wir setzten unsere Hilfsvariable $x_3$ auf $0$, addieren dann $x_1\cdot x_0$-mal eine $1$ auf $x_3$, und speichern dann das Ergebnis in $x_0$.
+	
+	
+	\section*{Aufgabe 5}
+	\begin{enumerate}[label=\alph*)]
+	\item	Unser Programm benutzt Variablen zusätzlich zu den aus \verb|P| und \verb|Q|, die die Programme selber nicht benutzen. Diese Variablen sind eben $x_l$, eine Hilfsvariable $x_m$ und $x_{k+1}$, welche immer $0$ ist.
+	\begin{lstlisting}
+	x_m := x_(k+1) + 0;		// Set x_m to 0
+	WHILE x_l = 0 DO
+		P;
+		x_l := x_(k+1) + 1;	// Set x_l to 1
+		x_m := x_(k+1) + 1;	// Set x_m to 1
+	END
+	WHILE x_m = 0 DO
+		Q;
+		x_l := x_(k+1) + 1;	// Set x_l to 1
+		x_m := x_(k+1) + 1;	// Set x_m to 1
+	END
+	\end{lstlisting}
+	
+	\newpage	
+	
+	\item	Unser Programm benutzt Variablen zusätzlich zu denen aus \verb|P_i|, die die Programme selber nicht benutzen. Diese Variablen sind eben $x_{k+1}$, eine Hilfsvariable $x_m$ und $x_l$, welche immer $0$ ist.
+	\begin{lstlisting}
+	// Initialisierung
+	x_m := x_l + 0;			// Set x_m to 0
+	
+	// Fallunterscheidungen
+	// Fall x_(k+1) = 0?
+	WHILE x_m = 0 DO
+		WHILE x_(k+1) = 0 DO
+			P_0;
+			x_m := x_l + 1;	// Set x_m to 1
+			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
+		END
+		x_(k+1) := x_(k+1) - 1;
+	END
+	
+	// Fall x_(k+1) = 1?
+	WHILE x_m = 0 DO
+		WHILE x_(k+1) = 0 DO
+			P_1;
+			x_m := x_l + 1;	// Set x_m to 1
+			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
+		END
+		x_(k+1) := x_(k+1) - 1;
+	END
+	
+	...
+	
+	// Fall x_(k+1) = i?
+	WHILE x_m = 0 DO
+		WHILE x_(k+1) = 0 DO
+			P_i;
+			x_m := x_l + 1;	// Set x_m to 1
+			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
+		END
+		x_(k+1) := x_(k+1) - 1;
+	END
+	\end{lstlisting}
+	\end{enumerate}
+	
+	
+	\newpage
+	\section*{Aufgabe 6}
+\end{document}
+

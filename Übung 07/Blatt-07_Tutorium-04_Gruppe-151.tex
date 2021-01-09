@@ -127,47 +127,50 @@
 		x_m := x_(k+1) + 1;	// Set x_m to 1
 	END
 	\end{lstlisting}
+	Unser Programm verwendet die Variable $x_m$ als eine Art Mutex. Haben wir nämlich einmal \verb|P| ausgeführt, können wir die \verb|Q| ausführen.
 	
 	\newpage	
 	
 	\item	Unser Programm benutzt Variablen zusätzlich zu denen aus \verb|P_i|, die die Programme selber nicht benutzen. Diese Variablen sind eben $x_{k+1}$, eine Hilfsvariable $x_m$ und $x_l$, welche immer $0$ ist.
 	\begin{lstlisting}
 	// Initialisierung
-	x_m := x_l + 0;			// Set x_m to 0
+	x_m := x_l + 0;				// Set x_m to 0
 	
-	// Fallunterscheidungen
+	// Fallunterscheidung fuer x_(k+1) = 0
 	// Fall x_(k+1) = 0?
-	WHILE x_m = 0 DO
-		WHILE x_(k+1) = 0 DO
-			P_0;
-			x_m := x_l + 1;	// Set x_m to 1
-			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
-		END
-		x_(k+1) := x_(k+1) - 1;
+	WHILE x_(k+1) = 0 DO
+		P_0;
+		x_m := x_l + 1;			// Set x_m to 1
+		x_(k+1) := x_l + 1;		// Set x_(k+1) to 1
 	END
+	x_(k+1) := x_(k+1) - 1;		// Decrease x_(k+1);
 	
+	
+	// Fallunterscheidungen fuer x_(k+1) > 0
 	// Fall x_(k+1) = 1?
-	WHILE x_m = 0 DO
-		WHILE x_(k+1) = 0 DO
+	WHILE x_(k+1) = 0 DO
+		WHILE x_m = 0 DO
 			P_1;
-			x_m := x_l + 1;	// Set x_m to 1
-			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
+			x_m := x_l + 1;		// Set x_m to 1
 		END
-		x_(k+1) := x_(k+1) - 1;
-	END
+		x_(k+1) := x_l + 1;		// Set x_(k+1) to 1
+	END 
+	x_(k+1) := x_(k+1) - 1;		// Decrease x_(k+1);
 	
-	...
+	
+	...	
 	
 	// Fall x_(k+1) = i?
-	WHILE x_m = 0 DO
-		WHILE x_(k+1) = 0 DO
+	WHILE x_(k+1) = 0 DO
+		WHILE x_m = 0 DO
 			P_i;
-			x_m := x_l + 1;	// Set x_m to 1
-			x_(k+1) := x_l + 0; // Set x_(k+1) to 0
+			x_m := x_l + 1;		// Set x_m to 1
 		END
-		x_(k+1) := x_(k+1) - 1;
-	END
+		x_(k+1) := x_l + 1;		// Set x_(k+1) to 1
+	END 
+	x_(k+1) := x_(k+1) - 1;		// Decrease x_(k+1);
 	\end{lstlisting}
+	Unser Programm verwendet die Variable $x_m$ als eine Art Mutex. Haben wir nämlich einmal ein Programm \verb|P_i| ausgeführt, so können wir kein anderes Programm mehr ausführen.
 	\end{enumerate}
 	
 	

@@ -91,13 +91,42 @@
 
 \begin{document}
 	\section*{Aufgabe 1}
+	Damit $L$ entscheidbar ist, muss es eine TM $M$ geben, sodass $L(M) = L$. $M$ würde also entscheiden, ob der Weihnachtsmann existiert oder nicht.\\
+	$L$ ist damit genau dann entscheidbar, wenn wir wissen, ob der Weihnachtsmann existiert oder nicht.
 	
 	
 	\section*{Aufgabe 2}
+	\subsection*{Formalisierung}
+	Wir haben Eingabewörter $w_i \in \{0,1\}^*$ und TMs $M_i$.
+	Eine Eingabe $w_i$ wird genau dann akzeptiert, wenn alle $M_j$ $w_i$ akzeptieren mit $0 \leq j \leq i$.
+	\textit{Kann man entscheiden, welche $w_i$ alle akzeptiert werden?}\\
+	$\Rightarrow$ Diagonalisierung
 	
+	\subsection*{Lösung}
+	Konstruiere Mehrband-Band-TM $M'$ mit folgender Funktionsweise auf einer Eingabe $w_i$ auf Band 0:
+	\begin{enumerate}
+	\item	Entnehme $i$ aus der Eingabe $w_i$ und hinterlege es auf einem Band als $j$.
+	\item	Lies $j$ und bekomme $M_j$.
+	\item	Führe auf der Originaleingabe $w_j$ auf $M_ij$ aus.
+		\begin{itemize}
+		\item	Falls $M_j$ verwirft, soll auch $M'$ verwerfen.
+		\item	Falls $M_j$ akzeptiert und $j=0$, soll $M'$ verwerfen.
+		\item	Falls $M_j$ akzeptiert und $j>0$, soll $j$ um $1$ reduziert werden, dann ab \verb|2)| fortgefahren werden.
+		\end{itemize}
+	\end{enumerate}
+	
+	\subsubsection*{Korrektheit}
+	$w_i$ wird akzeptiert $\Rightarrow$ Alle $M_j$ mit $0 \leq j \leq i$ akzeptieren $w_i$ $\Rightarrow$ $M'$ akzeptiert $w_i$.\\
+	$w_i$ wird verworfen $\Rightarrow$ Es mind. $j$ in $0 \leq j \leq i$, sodass $M_j$ auf $w_i$ verwirft $\Rightarrow$ $M'$ verwirft $w_i$.
 	
 	\section*{Aufgabe 3}
+	\begin{enumerate}[label=\alph*)]
+	\item	Ja, $L_1$ ist entscheidbar. Denn sei $M'$ eine TM. $M'$ kann sich einfach die Codierung von jedem $\langle M \rangle$ ansehen, bei unter 24 Zuständen akzeptieren, sonst verwerfen. Damit erkennt $M'$ $L_1$.
 	
+	\item	Nein. Halteproblem $\leq$ $L_2$
+	
+	\item	
+	\end{enumerate}
 	
 	\section*{Aufgabe 4}
 	

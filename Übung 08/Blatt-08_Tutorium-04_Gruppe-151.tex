@@ -82,7 +82,7 @@
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
 \ihead{BuK WS 2020/21 \\ Tutorium 04 \\\today}
-\chead{\Large Weihnachtsblatt}
+\chead{\Large Übungsblatt 08}
 \ohead{Til Mohr, 405959 \\
 	   Andrés Montoya, 405409 \\
 	   Marc Ludevid Wulf, 405401}
@@ -90,31 +90,14 @@
 \cfoot*{\pagemark} % Seitenzahlen unten
 
 \begin{document}
-	\section*{Aufgabe 1}
-	Damit $L$ entscheidbar ist, muss es eine TM $M$ geben, sodass $L(M) = L$. $M$ würde also entscheiden, ob der Weihnachtsmann existiert oder nicht.\\
-	$L$ ist damit genau dann entscheidbar, wenn wir wissen, ob der Weihnachtsmann existiert oder nicht.
-	
-	
-	\section*{Aufgabe 2}
-	
-	
-	\section*{Aufgabe 3}
-	\begin{enumerate}[label=\alph*)]
-	\item	Ja, $L_1$ ist entscheidbar. Denn sei $M'$ eine TM. $M'$ kann sich einfach die Codierung von jedem $\langle M \rangle$ ansehen, bei unter 24 Zuständen akzeptieren, sonst verwerfen. Außerdem müsste man noch überprüfen, ob die Eingabe richtig codiert ist. Damit erkennt $M'$ $L_1$.
-	
-	\item	$L_2$ ist nicht entscheidbar, weil man sonst das Halteproblem für $\langle M \rangle w$ lösen könnte.
-			Dafür verändern wir die Eingabe-TM $M$ so, dass die neue TM $M'$ zunächst die Eingabe liest und prüft ob es sich um eine Quadratzahl handelt. Wenn dies der Fall ist akzeptiert $M'$.
-			Andernfalls löscht $M'$ das Eingabewort und schreibt $w$ auf das Band und ruft dann $M$ auf. Wenn $M'$ in $L_2$ liegt hält $M'$ auf keiner Primzahl.
-			Da wenn $M'$ eine Primzahl bekommt $M$ mit $w$ ausgeführt wird, können wir schließen, dass $M$ auf $w$ nicht hält.
-	
-	\item	$L_{\infty}$ ist nicht entscheidbar, weil man sonst das Halteproblem für $\langle M \rangle w$ lösen könnte.
-			Dafür verändern wir die Eingabe-TM $M$ so, dass die neue TM $M'$ die Eingabe löscht und diese durch $w$ ersetzt und anschließend $M$ aufruft. Egal welches das Ergebnis ist akzeptiert $M'$ sobald $M$ terminiert.
-			Somit erreichen wir zum einen, dass alle Eingaben sich wie die Eingabe $w$ verhalten und zum anderen, dass es nur 2 mögliche Ereignisse geben kann: akzeptieren oder nicht halten.
-			$M'$ akzeptiert falls $M$ terminiert und $M'$ hält nicht falls $M$ nicht hält.
-			Wenn $M'$ nun in $L_{\infty}$ liegt heißt das, dass die TM $M$ auf $w$ terminiert. Andernfalls terminiert $M$ auf $w$ nicht.
-	\end{enumerate}
-	
 	\section*{Aufgabe 4}
+	
+	
+	\section*{Aufgabe 5}
+	
+	
+	\section*{Aufgabe 6}
+	
 	
 \end{document}
 

@@ -73,6 +73,7 @@
 \definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
 
 \usepackage{enumitem}
+\usepackage[caps]{complexity}
 
 \usepackage{listings}  
 \lstset{columns=fullflexible,
@@ -91,9 +92,55 @@
 
 \begin{document}
 	\section*{Aufgabe 4}
+	\begin{enumerate}[label=\alph*)]
+	\item	Um zu zeigen, dass \ComplexityFont{k-Independent Set} in \NP liegt, bauen wir uns einen Verifizierer:\\
+		Das Zertifikat hierbei ist eine Teilmenge von $V$, die wir $V'$ nennen werden. $V'$ soll hier genau $k$-viele Knoten besitzen und kann wie folgt kodiert werden:\\
+		$bin(u'_1)\$...bin(u'_i)\$...bin(u'_m)$, wobei alle $u'_i$ Knoten aus $V'$ sind, $0\leq i \leq m \leq n \coloneqq \vert V \vert$.\\
+		Der Verifizierer überprüft nun zuerst, ob die Codierung der Eingabe korrekt ist und, dass $m = k$ gilt. Anschließend wird für alle Paare $e \coloneqq (u'_i, u'_j)$ aus $V' \times V'$ überprüft, ob $e \not\in E$ gilt.\\
+	Damit liegt \ComplexityFont{k-Independent Set} in \NP.
 	
+	\item
+	\end{enumerate}
 	
 	\section*{Aufgabe 5}
+	\begin{enumerate}[label=\alph*)]
+	\item	
+		\begin{enumerate}[label=\arabic*)]
+		\item	Dieser Graph ist in \ComplexityFont{2-Colorability}:\\
+			\begin{tabular}{c|c}
+			Knoten & Farbe\\
+			\hline
+			1 & 1\\
+			2 & 1\\
+			3 & 2\\
+			4 & 2\\
+			5 & 1\\
+			6 & 2\\
+			7 & 1\\
+			\end{tabular}
+		\item	Dieser Graph ist nicht in \ComplexityFont{2-Colorability}:\\
+				Würde man Knoten $1$ als $1$ färben (wobei es prinzipiell hier egal ist, als was wir den Knoten $1$ färben), so müssen Knoten $3$ und $7$ als $2$ gefärbt werden. Deswegen müssten Knoten $2$, $4$ und $6$ wieder als $1$ gefärbt werden. Jedoch sind dann aber Knoten $2$ und $4$ immer gleich gefärbt. Da sie aber eine Kante zwischen sich besitzen, ist der Graph nicht in \ComplexityFont{2-Colorability}.
+		\end{enumerate}
+		
+	\item	Eine einfache, leicht abgeänderte Breitensuche sollte hier genügen:
+		\begin{enumerate}[label=\arabic*)]
+		\item Färbe alle Knoten $0$ (noch nicht gefunden)
+		\item Färbe den ersten Knoten $k$ mit aktueller Farbe $0$ aus $V$ $1$.
+		\item Führe \verb|BFS| auf $k$ aus. Färbe dabei alle benachbarten Knoten, die Farbe $0$ sind, in der von sich selber verschiedenen Farbe. Ist ein benachbarter Knoten schon eine von sich selber verschiedene Farbe, so laufe über diesen nicht mehr (schon besucht). Ist ein benachbarter Knoten aber dieselbe Farbe wie die eigene, so \textbf{verwerfe}.
+		\item Falls noch Knoten in $V$ als $0$ gefärbt sind, kehre zu Schritt \verb|2)| zurück.
+		\item \textbf{Akzeptiere}.
+		\end{enumerate}
+		
+	\item	Um zu zeigen, dass \ComplexityFont{3-Colorability} in \NP liegt, bauen wir uns einen Verifizierer:\\
+		Das Zertifikat hierbei ist die Zuordnung von allen Knoten aus $V$ zu den Farben $\{1,2,3\}$. Dabei das das Zertifikat folgende Kodierung:\\
+		$bin(k_0)\$bin(f_0)\$...bin(k_i)\$bin(f_i)\$...bin(k_n)\$bin(f_n)$, wobei $0\leq i \leq n \coloneqq \vert V \vert$ gilt. Hierbei ist $f_i$ die Farbe aus $\{1,2,3\}$, die dem jeweiligen Knoten $k_i$ aus $V$ zugeordnet wurde.\\
+		Der Verifizierer überprüft nun folgende Dinge:
+		\begin{itemize}
+		\item Zertifikat korrekt formatiert
+		\item Für jede Kante $(k_i,k_j) \in E$ ($0\leq i,j \leq n, i \neq j$), ob $f_i \neq f_j$.
+		\end{itemize}
+		Damit liegt \ComplexityFont{3-Colorability} in \NP.
+	\end{enumerate}
 	
 	
 	\section*{Aufgabe 6}

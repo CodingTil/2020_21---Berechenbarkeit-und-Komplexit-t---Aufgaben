@@ -93,7 +93,7 @@
 \begin{document}
 	\section*{Aufgabe 4}
 	\begin{enumerate}[label=\alph*)]
-	\item	Um zu zeigen, dass \ComplexityFont{k-Independent Set} in \NP liegt, bauen wir uns einen Verifizierer:\\
+	\item	Um zu zeigen, dass \ComplexityFont{k-Independent Set} in \ComplexityFont{NP} liegt, bauen wir uns einen Verifizierer:\\
 		Das Zertifikat hierbei ist eine Teilmenge von $V$, die wir $V'$ nennen werden. $V'$ soll hier genau $k$-viele Knoten besitzen und kann wie folgt kodiert werden:\\
 		$bin(u'_1)\$...bin(u'_i)\$...bin(u'_m)$, wobei alle $u'_i$ Knoten aus $V'$ sind, $0\leq i \leq m \leq n \coloneqq \vert V \vert$.\\
 		Der Verifizierer überprüft nun zuerst, ob die Codierung der Eingabe korrekt ist und, dass $m = k$ gilt. Anschließend wird für alle Paare $e \coloneqq (u'_i, u'_j)$ aus $V' \times V'$ überprüft, ob $e \not\in E$ gilt.\\
@@ -131,7 +131,7 @@
 		\item \textbf{Akzeptiere}.
 		\end{enumerate}
 		
-	\item	Um zu zeigen, dass \ComplexityFont{3-Colorability} in \NP liegt, bauen wir uns einen Verifizierer:\\
+	\item	Um zu zeigen, dass \ComplexityFont{3-Colorability} in \ComplexityFont{NP} liegt, bauen wir uns einen Verifizierer:\\
 		Das Zertifikat hierbei ist die Zuordnung von allen Knoten aus $V$ zu den Farben $\{1,2,3\}$. Dabei das das Zertifikat folgende Kodierung:\\
 		$bin(k_0)\$bin(f_0)\$...bin(k_i)\$bin(f_i)\$...bin(k_n)\$bin(f_n)$, wobei $0\leq i \leq n \coloneqq \vert V \vert$ gilt. Hierbei ist $f_i$ die Farbe aus $\{1,2,3\}$, die dem jeweiligen Knoten $k_i$ aus $V$ zugeordnet wurde.\\
 		Der Verifizierer überprüft nun folgende Dinge:

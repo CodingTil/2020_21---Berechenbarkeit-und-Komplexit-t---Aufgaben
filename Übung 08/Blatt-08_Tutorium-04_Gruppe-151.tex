@@ -96,10 +96,20 @@
 	\item	Um zu zeigen, dass \ComplexityFont{k-Independent Set} in \ComplexityFont{NP} liegt, bauen wir uns einen Verifizierer:\\
 		Das Zertifikat hierbei ist eine Teilmenge von $V$, die wir $V'$ nennen werden. $V'$ soll hier genau $k$-viele Knoten besitzen und kann wie folgt kodiert werden:\\
 		$bin(u'_1)\$...bin(u'_i)\$...bin(u'_m)$, wobei alle $u'_i$ Knoten aus $V'$ sind, $0\leq i \leq m \leq n \coloneqq \vert V \vert$.\\
-		Der Verifizierer überprüft nun zuerst, ob die Codierung der Eingabe korrekt ist und, dass $m = k$ gilt. Anschließend wird für alle Paare $e \coloneqq (u'_i, u'_j)$ aus $V' \times V'$ überprüft, ob $e \not\in E$ gilt.\\
-	Damit liegt \ComplexityFont{k-Independent Set} in \NP.
+		Der Verifizierer überprüft nun zuerst, ob die Codierung der Eingabe korrekt ist, dass $V'$ tatsächlich eine Untermenge von $V$ ist und, dass $m = k$ gilt. Dies ist offensichtlich in linearer Zeit möglich. Anschließend wird für alle Paare $e \coloneqq (u'_i, u'_j)$ aus $V' \times V'$ überprüft, ob $e \not\in E$ gilt. Dies ist in quadratischer Zeit möglich da alle Paare von Knoten einimal durchlaufen werden müssen.\\
+	Da die Laufzeit des Verifizierers polynomiell ist, liegt \ComplexityFont{k-Independent Set} in \NP.
 	
-	\item
+	\item	Unser Algorithmus geht wie folgt vor:\\
+		Der Algorithmus überprüft zunächst ob es eine Lösung gibt indem er den Graphen $V$ an \ComplexityFont{k-Independent} übergibt. Wenn eine Lösung nicht möglich ist terminiert das Programm ohne eine gefundene Lösung.\\
+		Andernfalls startet der Algorithmus beim ersten Knoten des Graphens $V$ und entfernt diesen. Dabei muss auch darauf geachtet werden, dass die Kanten entsprechend angepasst werden. Dieser modifizierte Graph wird an \ComplexityFont{k-Independent} übergeben. Falls dieser den Graphen verwirft heisst das, dass der entfernte Knoten in der Lösung sein muss und wir machen die Modifizierung wieder rückgängig und wiederholen diesen Prozess beim nächsten Knoten. Falls der modifizierte Graph jedoch akzeptiert wird fahren wir ohne den entfernten Knoten fort.\\
+		Der Algorithmus terminiert sobald alle Knoten durchlaufen wurden und gibt den modifizierten Graphen zurück.\\
+		Die Laufzeit ist offensichtlich polynomiell da der polynomielle Algorithmus der die Entscheidungsvariante löst linear oft aufgerufen wird.\\
+		\\
+		Korrektheit:\\
+		Der zurückgegebene Graph hat offensichtlich zwei Eigenschaften: er wird von \ComplexityFont{k-Independent} akzeptiert und ist minimal, im Sinne von wenn ein weiterer Knoten entfernt wird ist er nicht mehr in \ComplexityFont{k-Independent}.\\
+		Dass dies ausreichend ist um eine Lösung zu produzieren ist nicht ganz so offensichtlich. Klar ist, dass der zurückgegebene Graph auf jeden Fall eine Untermenge von $V$ ist und dass es mindestens $k$ Knoten hat, da der zurückgegebene Graph von \ComplexityFont{k-Independent} akzeptiert wird. Zu beweisen ist aber noch, dass es genau $k$ Knoten gibt und das keine dieser Knoten über eine Kante verbunden sind.\\
+		Dass es genau $k$ Knoten gibt liegt daran das der zurückgegebene Graph minimal ist. O.b.D.A: Angenommen der zurückgegebene Graph hätte $k+1$ Knoten. Da dieser Graph von \ComplexityFont{k-Independent} akzeptiert wird muss es eine Untermenge von diesem Graphen geben das ein \ComplexityFont{k-Independent Set} ist. Also müsste der Algorithmus \ComplexityFont{k-Independent} nach entfernen eines der Knoten immer noch akzeptiert haben. Somit hätte unser Suchalgorithmus einen der Knoten nicht wieder hizugefügt. Somit ist bewiesen das der produzierte Graph auf jeden Fall $k$ Knoten hat.\\
+		Nun ist es auch offensichtlich, dass alle Knoten des zurückgegebenen Graphs nicht mit Kanten verbunden sind, da der Graph $k$ Knoten hat und von \ComplexityFont{k-Independent} akzeptiert wird. Die in \ComplexityFont{k-Independent} gesuchte Untermenge  kann nur der übergebene Graph sein da die Untermenge $k$ Knoten haben muss.		
 	\end{enumerate}
 	
 	\section*{Aufgabe 5}
@@ -130,6 +140,13 @@
 		\item Falls noch Knoten in $V$ als $0$ gefärbt sind, kehre zu Schritt \verb|2)| zurück.
 		\item \textbf{Akzeptiere}.
 		\end{enumerate}
+		Die Laufzeit ist die selbe der Breitensuche und somit polynomiell.\\
+		\\
+		Korrektheit des Algorithmus:
+		\begin{itemize}
+		\item Falls der Algorithmus einen Graphen akzeptiert, wurde eine korrekte Färbung gefunden. Somit liegt der Graph in \ComplexityFont{2-Colorability}.
+		\item Falls der Algorithmus einen Graph verwirft wurden zwei benachbarte Knoten gefunden die die gleiche Farbe haben. Da die Färbung innerhalb eines zusammenhängenden Graphs bis auf das Vertauschen der Farben eindeutig ist kann es keine Färung geben sodass der Graph in \ComplexityFont{2-Colorability} liegt.
+		\end{itemize}
 		
 	\item	Um zu zeigen, dass \ComplexityFont{3-Colorability} in \ComplexityFont{NP} liegt, bauen wir uns einen Verifizierer:\\
 		Das Zertifikat hierbei ist die Zuordnung von allen Knoten aus $V$ zu den Farben $\{1,2,3\}$. Dabei das das Zertifikat folgende Kodierung:\\
@@ -139,12 +156,16 @@
 		\item Zertifikat korrekt formatiert
 		\item Für jede Kante $(k_i,k_j) \in E$ ($0\leq i,j \leq n, i \neq j$), ob $f_i \neq f_j$.
 		\end{itemize}
-		Damit liegt \ComplexityFont{3-Colorability} in \NP.
+		Damit liegt \ComplexityFont{3-Colorability} in \NP, da diese Überprüfung in polynomieller Zeit geschieht, da der erste Schritt in linearer und der zweite in quadratischer Laufzeit möglich ist.
+		
 	\end{enumerate}
 	
 	
 	\section*{Aufgabe 6}
-	
+		Die nichtdeterministische 1-Band-TM die das Komplement von $L_{PALINDROM}$ erkennt funktioniert folgendermassen:\\
+		Die TM speichert auf einer Spur das Eingabewort und auf einer weiteren einen Counter. Die TM durchläuft das Eingabewort Buchstabe für Buchstabe und zählt die gegangenen Schritte. Nach jedem Schritt gibt es zwei Möglichkeiten. Entweder die TM geht an das Ende des Eingabeworts und geht dann so viele Schritte zurück wie im Counter steht um zu überprüfen ob dort der gleiche Buchstabe steht um ggf. die Eingabe zu akzeptieren falls die Buchstaben verschieden sind oder es geht mit dem nächsten Buchstaben weiter.\\
+		Da die TM nur akzeptiert falls es einen Index $i$ gibt sodass der $i$-te und der $n-i$-te Buchstabe verschieden sind akzeptiert diese TM nur Wörter die keine Palindrome sind.
+		Die Laufzeit dieses Algorithmus ist in $O(n*log(n))$, da das Durchlaufen des Eingabeworts und danach das Prüfen der Gleichheit zwei korrespondenter Buchstaben in linearer Zeit möglich wäre, falls es den Counter nicht gäbe. Das Mitbewegen des Counters ist in logarithmische Zeit möglich da die maximale Länge des Counter logarithmische zur Länge des Eingabewortes wächst.
 	
 \end{document}
 

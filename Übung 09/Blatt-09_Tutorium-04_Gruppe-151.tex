@@ -78,7 +78,7 @@
 \usepackage{listings}  
 \lstset{columns=fullflexible,
         mathescape=true,
-        morekeywords={if,else,return,while,do,break,def,Input},
+        morekeywords={if,else,return,for,while,do,break,def,Input},
         numbers=left,
     	stepnumber=1,
    		showstringspaces=false,
@@ -120,14 +120,16 @@
 	opt = getTourCostOpt(G)
 	for $e \in E$:
 		G' = (V, remove(E,e))
-		if opt == getTourCostOpt(G'):
+		if (*\ComplexityFont{TSP-E}*)(G',opt):
 			G = G'
 	
 	// Calulate the path
 	$v_{start}$ = getFirst(V)
 	K = $\{v_{start}\}$
+	e = getRandomEdgeFrom(E, $v_{start}$)
+	E = remove(E, e)
 	while true:
-		u = getNeighbourOf(getLast(K), K) // sets u to the neighbour of the last element in K, which is not in K
+		u = getNeighbourOf(E, getLast(K)) // get the only neighbour
 		K = add(K, u) // add u to K
 	
 	
@@ -141,7 +143,7 @@
 	Damit ist der gesamte Algorithmus in polynomieller Zeit berechenbar.\\
 	
 	Korrektheit:\\
-	Die Methode bestimmt für einen übergebenen Graphen \verb|G| die Optimale Tour Kosten des \ComplexityFont{TSP}. Da jede Tour in \verb|G| genau $n$ viele Knoten besitzt, läuft diese Tour dann auch über genau $n$ vielen Kanten aus \verb|E|. Da die Tour also höchstens über die $n$ schwersten Kanten laufen kann, setzen wir unsere optimale Kosten auf die Summe der Kosten dieser Kanten. Nun überprüfen wir, ob es auch Touren gibt mit geringeren Gesamtkosten. Dazu könnten wir natürlich jede mögliche $n$-Kombination an Kanten überprüfen, doch es ist viel simpler, unsere bisherigen optimalen Kosten zu verringern (möglich, da alle Kosten in $\mathbb{N}$ liegen. So können wir schrittweise die Optimalen Tourkosten von \verb|G| bestimmen.\\
+	Die Methode bestimmt für einen übergebenen Graphen \verb|G| die Optimale Tour Kosten des \ComplexityFont{TSP}. Da jede Tour in \verb|G| genau $n$ viele Knoten besitzt, läuft diese Tour dann auch über genau $n$ vielen Kanten aus \verb|E|. Da die Tour also höchstens über die $n$ schwersten Kanten laufen kann, setzen wir unsere optimale Kosten auf die Summe der Kosten dieser Kanten. Nun überprüfen wir, ob es auch Touren gibt mit geringeren Gesamtkosten. Dazu könnten wir natürlich jede mögliche $n$-Kombination an Kanten überprüfen, doch es ist viel simpler, unsere bisherigen optimalen Kosten zu verringern (möglich, da alle Kosten in $\mathbb{N}$ liegen). So können wir schrittweise die Optimalen Tourkosten von \verb|G| bestimmen.\\
 	In dem 2. Teil des Algorithmus bestimmen wir mithilfe der obigen Methode die optimalen Kosten von einer Tour in \verb|G|. Anschließend überprüfen wir für jede Kante in \verb|E|, ob diese für die Optimale Tour relevant ist. Falls nicht, so löschen wir diese. Mit diesem Teil minimieren wir also den Graphen \verb|G|, sodass dieser nur noch die Kanten der optimalen Tour enthält.\\
 	Im letzten Teil müssen wir noch eine Reihenfolge der Knoten finden, in der die optimale Tour laufen kann. Dazu bestimmen wir uns einen Startknoten $v_{start}$, und gehen dann die Kanten der Knoten nacheinander entlang.\\
 	Also können wir mithilfe von \ComplexityFont{TSP-E} auch \ComplexityFont{TSP} bestimmen.
@@ -175,7 +177,7 @@
 		\item	Eingabe korrekt formatiert (Linearer Zeitaufwand in $n$).
 		\item	Überstimmt die Vektordimension $n$ von $x$ überein mit der gegebenen Matrix $A$ und dem Vektor $b$? (höchstens Quadratischer Zeitaufwand in $n \cdot m$, je nach Codierung der Matrix $A$)
 		\item	Berechnung von $Ax$ (Quadratischer Zeitaufwand in $n \cdot m$)
-		\item	Abgleich, ob $Ax \geq b$ (Linearer Zeitaufwand in $n$).
+		\item	Abgleich, ob $Ax \geq b$ (Linearer Zeitaufwand in $m$).
 		\end{itemize}
 		Damit läuft der Verifizierer in polynomieller Zeit und \ComplexityFont{$\{-1,0,1\}$-RESTRICTED INTEGER PROGRAMMING} ist in \ComplexityFont{NP}.
 		

@@ -147,26 +147,42 @@
 	In dem 2. Teil des Algorithmus bestimmen wir mithilfe der obigen Methode die optimalen Kosten von einer Tour in \verb|G|. Anschließend überprüfen wir für jede Kante in \verb|E|, ob diese für die Optimale Tour relevant ist. Falls nicht, so löschen wir diese. Mit diesem Teil minimieren wir also den Graphen \verb|G|, sodass dieser nur noch die Kanten der optimalen Tour enthält.\\
 	Im letzten Teil müssen wir noch eine Reihenfolge der Knoten finden, in der die optimale Tour laufen kann. Dazu bestimmen wir uns einen Startknoten $v_{start}$, und gehen dann die Kanten der Knoten nacheinander entlang.\\
 	Also können wir mithilfe von \ComplexityFont{TSP-E} auch \ComplexityFont{TSP} bestimmen.
+	
+\newpage	
+	
 	\section*{Aufgabe 5}
 	Hierzu nehmen wir uns eine Formel $\phi$ in 3-KNF mit den Klauseln $k_i$.
-	Jedes $k_i$ in $\phi$ ist daher der Form $(x_i \lor y_i \lor z_i)$. Nun teilen wir jedes $k_i$ in zwei weitere Klauseln $k_i'$ und $k_i''$, wobei wir auch noch für jede Klausel eine Variable $c_i$, und für alle Klauseln die Variable $f = 0$ einführen.\\
+	Jedes $k_i$ in $\phi$ ist daher der Form $(x_i \lor y_i \lor z_i)$. Nun teilen wir jedes $k_i$ in zwei weitere Klauseln $k_i'$ und $k_i''$, wobei wir auch noch für jede Klausel eine Variable $c_i$, und für alle Klauseln eine weitere Variable $f$ einführen.\\
 	Aus $k_i$ wird also $k_i' \land k_i'' = (x_i \lor y_i \lor c_i) \land (\bar{c_i} \lor z_i \lor f)$.
-	Hierbei wird $c_i$ auf $\neg (x_i \lor y_i)$ gesetzt.\\
 	Diese Konstruktion können wir in Linearer Zeit erstellen.\\
 	
 	Korrektheit:\\
-		Sei $\phi$ in 3-KNF mit gegebener Belegung der Variablen. Dann ist jede Klausel $k_i$ der Form $(x_i \lor y_i \lor z_i)$.\\
-		Hieraus konstruieren wir eine neue aussagenlogische Formel $\phi '$ wie oben beschrieben.\\
+	
+	\ComplexityFont{3-SAT} $\Rightarrow$ \ComplexityFont{NOT-ALL-EQUAL-SAT}:\\
+		Sei $\phi$ aus \ComplexityFont{3-SAT} mit gegebener Belegung der Variablen. Dann ist jede Klausel $k_i$ der Form $(x_i \lor y_i \lor z_i)$.\\
+		Hieraus konstruieren wir eine neue aussagenlogische Formel $\phi '$ wie oben beschrieben, übernehmen dieselbe Belegung für die übernommenen Variablen und setzen $f$ auf $0$. Anschließend müssen wir noch jedes $c_i$ belegen.\\
 		\begin{itemize}
 		\item Falls $x_i$ oder $y_i$ wahr ist, so setzen wir $c_i$ auf $0$. Damit ist zum einen die Klausel $k_i'$ wahr, zum anderen gibt es in dieser Klausel mindestens sowohl ein wahres, als auch ein falsches Literal. Desweiteren ist dadurch (unabhängig von $z_i$) auch $k_i''$ wahr, da dort $\bar{c_i}$ enthalten ist. Auch diese Klausel besitzt sowohl ein wahres, als auch ein falsches Literal ($f$).
 		
-		\item Falls $x_i$ und $y_i$ falsch sind, aber $z_1$ wahr, dann setzen wir $c_i$ auf $1$. Damit ist die erste Klausel ($k_i'$) wahr und besitzt auch wieder mindestens ein wahres, als auch ein falsches Literal. Die Klausel $k_i'$ ist aufgrund von $z_i$ auch wahr, und besitzt auch wieder ein wahres und ein falsches Literal ($f$).
-		
-		\item Falls keines der drei Literale wahr ist, so gibt es ja keine Erfüllende Belegung der Variablen, weshalb die gesamte Formel nicht in \ComplexityFont{3-SAT} ist. Trotzdem setzen wir hier ja $c_i$ auf $1$, weshalb ja die Klausel $k_i'$ war ist. Jedoch ist die Klausel $k_i''$ folglich nicht wahr, weshalb die resultierende Formel auch nicht in \ComplexityFont{NOT-ALL-EQUAL-SAT} ist.
+		\item Falls $x_i$ und $y_i$ falsch sind, muss $z_i$ wahr sein. Dann setzen wir $c_i$ auf $1$. Damit ist die erste Klausel ($k_i'$) wahr und besitzt auch wieder mindestens ein wahres, als auch ein falsches Literal. Die Klausel $k_i'$ ist aufgrund von $z_i$ auch wahr, und besitzt auch wieder ein wahres und ein falsches Literal ($f$).
 		\end{itemize}
-		Damit ist der Wahrheitsgrad von $\phi '$ immer genau derselbe wie von $\phi$ für jede Belegung.\\
-		Hat also $\phi$ keine erfüllende Belegung (nicht in \ComplexityFont{3-SAT}), so hat auch $\phi '$ keine erfüllende Belegung (nicht in \ComplexityFont{NOT-ALL-EQUAL-SAT}).\\
-		Hat aber $\phi$ eine erfüllende Belegung (ist in \ComplexityFont{3-SAT}), so hat $\phi '$ eine erfüllende Belegung, die die gleichen Variablen gleich belegt, und weitere Variablen so belegt, dass jede Klausel mindestens ein wahres und ein falsches Literal besitzt (ist in \ComplexityFont{NOT-ALL-EQUAL-SAT}).
+		Also können wir mit der erfüllenden Belegung von $\phi$ auch eine erfüllende Belegung von $\phi'$ konstruieren, sodass $\phi' \in$\ComplexityFont{NOT-ALL-EQUAL-SAT}.\\
+		
+	\ComplexityFont{NOT-ALL-EQUAL-SAT} $\Rightarrow$ \ComplexityFont{3-SAT}\\
+		Sei $\phi'$ aus \ComplexityFont{NOT-ALL-EQUAL-SAT} mit der obig beschriebenen Form. $\phi'$ hat also eine erfüllende Belegung, wobei jede Klausel sowohl ein wahres, als auch ein falsches Literal besitzt. Hier kann es jedoch vorkommen, dass $f$ $0$ ist, aber auch $1$. Wir finden nun eine Belegung für $\phi$:
+		\begin{itemize}
+		\item	Fall $y=0$:\\
+				Dann muss $z_i$ $1$ sein, oder $c_i$ $0$, damit $k_i''$ wahr ist. Ist $z_i$ $1$, dann ist offensichtlich $k_i$ auch wahr.\\
+				Ist $z_i$ $0$, so muss $c_i$ $0$ sein. Daraus folgt, dass $x_i$ oder $y_i$ wahr ist (da es sonst keine erfüllende Belegung für $\phi'$ gäbe). Also ist offensichtlich $k_i$ auch wahr.
+		
+		\item	Fall $y=1$:\\
+				Dann muss $z_i$ $0$ sein, oder $c_i$ $1$, damit diese Klausel zwei Literale mit unterschiedlichen Wahrheitswerten besitzt. Jetzt negieren wir die Belegung aller Variablen $x, y, z$ für alle Klauseln.\\
+				War $z_i$ ursprünglich $0$, dann ist $z_i$ nach der Negation $1$, weshalb $k_i$ offensichtlich wahr ist.\\
+				War $z_i$ ursprünglich $1$, dann ist $c_i$ $1$. Dann muss $x_i$ oder $y_i$ $0$ sein, da sonst die Klausel $k_i'$ keine Literale mit unterschiedlichen Wahrheitswerten hätte. Nach der Negation der Belegung ist also $k_i$ wahr.
+		\end{itemize}
+		Also können wir für $\phi' \in$\ComplexityFont{NOT-ALL-EQUAL-SAT} zeigen, dass $\phi \in$\ComplexityFont{3-SAT} gilt.
+		
+\newpage
 	
 	\section*{Aufgabe 6}
 	\begin{enumerate}[label=(\alph*)]

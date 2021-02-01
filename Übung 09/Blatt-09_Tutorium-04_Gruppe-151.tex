@@ -197,7 +197,32 @@
 		\end{itemize}
 		Damit läuft der Verifizierer in polynomieller Zeit und \ComplexityFont{$\{-1,0,1\}$-RESTRICTED INTEGER PROGRAMMING} ist in \ComplexityFont{NP}.
 		
-	\item 
+	\item
+		Gesucht ist eine polynomielle Funktion die Instanzen von \ComplexityFont{3-SAT} auf Instanzen von \ComplexityFont{$\{-1,0,1\}$-RESTRICTED INTEGER PROGRAMMING} (\ComplexityFont{RIP}) abbildet.\\
+		Für ein \ComplexityFont{3-SAT} Problem mit $k$ Variablen $y_0 ... y_{k-1}$ seien diese in $x \in \{0,1\}^{2k}$ kodiert als $x_{2i} = 1$ falls $y_i = True$ und $x_{2i + 1} = 1$ falls $y_i = False$.
+		Nachher werden wir sicherstellen, dass immer genau eins der beiden $1$ ist, da eine Variable immer nur entweder $True$ oder $False$ sein kann.\\
+		\\
+		Kodierung der Klauseln von \ComplexityFont{3-SAT}:\\
+		Die ersten $m$ Zeilen von $A$ kodieren die $m$ Klauseln, wobei $a_{j,2i}$ genau dann $1$ ist wenn $y_i$ in der $j$-ten Klausel vorkommt und $a_{j,2i+1}$ genau dann wenn $\bar{y_i}$ in der $j$-ten Klausel vorkommt. Alle anderen Einträge in der Zeile sind 0.\\
+		Um sicherzustellen, dass aus jeder Klausel immer mindestens eine Variable $True$ ist setzen wir $b_j = 1$ für alle $0 \leq j < m$.\\
+		Nun müssen wir noch sicherstellen, dass eine Variable immer nur $True$ oder $False$ sein kann. Dafür definieren wir weitere $k$ Zeilen in $A$ wobei $a_{m+i,2i}$ und $a_{m+i,2i+1}$ für $0 \leq i < k$ auf $1$ gesetzt werden und alle anderen Einträge auf $0$. Die Einträge $b_m ... b_{m+k-1}$ werden wie oben auf 1 gesetzt.\\
+		Dies sichert zwar, dass mindestens eins von den beiden Einträgen $x_{2i}$ und $x_{2i + 1}$ auf $1$ gesetzt ist, aber es kann sein, dass beide gesetzt sind. Deswegen definieren wir weitere $k$ Zeilen in $A$ wobei $a_{m+k+i,2i}$ und $a_{m+k+i,2i+1}$ für $0 \leq i < k$ auf $-1$ gesetzt werden. Alle weiteren Einträge in $A$ werden wieder auf $0$ gesetzt und die Einträge $b_{m+k} ... b_{m+2k-1}$ werden dieses Mal auf $-1$ gesetzt.\\
+		Dank der $2k$ hinzugefügten Zeilen in $A$ ist nun sichergestellt das jede Lösung $x$ auch wieder zu einer Lösung des \ComplexityFont{3-SAT} Problems dekodiert werden kann, da jeder Variable eindeutig ein Wahrheitswert zugeordnet werden kann.\\
+		\\
+		Diese Beschriebene Kodierung kann in linearer Zeit über die Länge des gegebenen \ComplexityFont{3-SAT} Problems durchgeführt werden, da das Eingabewort nur ein Mal durchlaufen werden muss. Das Anhängen der weiteren $2k$ Zeilen ist ebenfalls in linearer Zeit, dieses Mal linear über die Anzahl an Variablen, durchgeführt werden.\\
+		Also hat der Algorithmus eine polynomielle Zeit.\\
+		\\
+		Korrektheit:\\
+		\begin{itemize}
+		\item
+			$True$-Instanz von \ComplexityFont{3-SAT} $\Rightarrow$ $True$-Instanz von \ComplexityFont{RIP}:\\
+			Für eine gegebene $True$-Instanz von \ComplexityFont{3-SAT} mit der Lösung $y = y_0 ... y_k$ gilt, dass dann auch das nach der oben vorgestellten Kodierung die Lösung $x = x_0 ... x_{2k}$ existiert die die Ungleichung $Ax \geq b$ erfüllt, da zum einen die ersten $m$ Zeilen der Ungleichung erfüllt, da in jeder Klausel des gegebenen Problems mit der dazugehörigen Lösung ein $True$ vorhanden ist. Auch werden auf jeden Fall die weiteren $2k$ Zeilen erfüllt sein, falls die Kodierung richtig durchgeführt wurde.
+			
+		\item
+			$True$-Instanz von \ComplexityFont{RIP} $\Rightarrow$ $True$-Instanz von \ComplexityFont{3-SAT}:\\
+			Für eine gegebene $True$-Instanz von \ComplexityFont{RIP} mit der Lösung $x = x_0 ... x_{2k}$ gilt, dass man die Lösung zu der Lösung $y = y_0 ... y_k$ für das \ComplexityFont{3-SAT} Problem dekodieren kann. Diese Lösung erfüllt die \ComplexityFont{3-SAT} Aussage da in jeder der Klauseln mindestens eine der Variablen $True$ auswerten wird. Grund dafür ist die Kodierung in $A$.
+		\end{itemize}
+		Damit ist bewiesen, dass \ComplexityFont{$\{-1,0,1\}$-RESTRICTED INTEGER PROGRAMMING} \ComplexityFont{NP-schwer} ist.
 	\end{enumerate}
 	
 \end{document}
